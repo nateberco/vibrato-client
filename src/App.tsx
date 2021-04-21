@@ -2,13 +2,13 @@ import React from 'react';
 // import logo from './logo.svg';
 // import './App.css';
 
-import { RegisterForm } from './components/RegisterForm';
+import { Auth } from './components/auth/Auth';
 
 
 function App() {
   return (
     <div>
-      <RegisterForm />
+      <Auth />
     </div>
   );
 }
