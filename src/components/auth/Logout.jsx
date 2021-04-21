@@ -7,7 +7,7 @@ const LogOut = (props) => {
     const clearToken = () => {
         localStorage.clear();
         props.setSessionToken('');
-        props.setUserEmail('');
+        props.setUsername('');
         console.log("Logged out");
     };
 
@@ -17,7 +17,7 @@ const LogOut = (props) => {
 
     return ( 
         <>
-        <Auth updateToken={props.updateToken} updateEmail={props.updateEmail}/>
+        <Auth updateToken={props.updateToken} updateUsername={props.updateUsername}/>
         </>
 
      );
