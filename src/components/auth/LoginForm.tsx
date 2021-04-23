@@ -1,7 +1,7 @@
 /* **************** LONG VERSION *************** */
 
 import React from "react";
-import "../../App.css";
+// import "../../App.css";
 
 interface LoginProps {
   updateToken: Function;
@@ -25,6 +25,7 @@ export class LoginForm extends React.Component<LoginProps, LoginState> {
       },
     };
   }
+
 
   handleChange = (e : any) => {
         e.preventDefault();
@@ -73,7 +74,7 @@ export class LoginForm extends React.Component<LoginProps, LoginState> {
     }
   };
   render() {
-    const { errors } = this.state;
+    // const { errors } = this.state; // taking errors out on Login Form since we don't need password validation
     return (
       <div className="wrapper">
         <div className="form-wrapper">
@@ -94,9 +95,9 @@ export class LoginForm extends React.Component<LoginProps, LoginState> {
                 name="password"
                 onChange={this.handleChange}
               />
-              {errors.password.length > 0 && (
+              {/* {errors.password.length > 0 && (
                 <span style={{ color: "red" }}>{errors.password}</span>
-              )}
+              )} */}
             </div>
             <div className="submit">
               <button>Log In!</button>
