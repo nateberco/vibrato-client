@@ -71,12 +71,14 @@ export class RegisterForm extends React.Component<RegisterProps, RegisterState> 
       console.log("Unable to Register - Please Try Again!"); //show error later
     }
   };
+
+  
   render() {
     const { errors } = this.state;
     return (
-      <div className="wrapper">
-        <div className="form-wrapper">
-          <h2>Sign Up</h2>
+      <div>
+        <div>
+          <h2 className="header">Sign Up</h2>
           <form onSubmit={this.handleSubmit} noValidate>
             <div className="username">
               <label htmlFor="username">username</label>
@@ -87,7 +89,7 @@ export class RegisterForm extends React.Component<RegisterProps, RegisterState> 
               />
             </div>
             <div className="password">
-              <label htmlFor="password">Password</label>
+              <label htmlFor="password">password</label>
               <input
                 type="password"
                 name="password"

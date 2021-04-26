@@ -1,20 +1,17 @@
 import React from 'react';
+import { BrowserRouter as Router } from "react-router-dom";
 // import logo from './logo.svg';
 // import './App.css';
 
-import { Auth } from './components/auth/Auth';
-import  ListingPublish  from './components/listing/ListingPublish';
-// import Routes from './components/home/Routes';
-// import Sitebar from './components/home/Sitebar';
+import Routes from './components/home/Routes';
 
 
 function App() {
   return (
     <div>
-      {/* <Routes /> */}
-      {/* <Sitebar /> */}
-      <Auth />
-      <ListingPublish />
+      <Router>
+          <Routes />
+      </Router>
 
     </div>
   );

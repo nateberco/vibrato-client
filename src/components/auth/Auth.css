@@ -1,4 +1,4 @@
-/* p,
+p,
 div {
   font-family: Lato;
 }
@@ -66,19 +66,20 @@ button {
   min-width: 100%;
   cursor: pointer;
   margin-right: 0.25em;
-  margin-top: 0.5em;
+  margin-top: 10%;
   padding: 0.938em;
   border: none;
   border-radius: 4px;
   background-color: rgb(8, 63, 22);
   color: #fefefe;
 }
+
 button:hover {
   background-color: rgb(30, 109, 50);
   color: #fefefe;
 }
 
-.emailAddress,
+.username,
 .password {
   display: flex;
   flex-direction: column;
@@ -90,8 +91,36 @@ button:hover {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
-} */
+}
+
+/* ********************************* */
 
 .login-container {
   background-color: antiquewhite;
+}
+
+.form-toggler {
+  margin-top: 15%;
+  color: black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.form-toggler:hover {
+  margin-top: 15%;
+  cursor: pointer;
+  color: pink;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
