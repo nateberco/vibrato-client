@@ -10,7 +10,7 @@ const ListingIndex = (props: any) => {
     const [listingToUpdate, setListingToUpdate] = useState({});
 
     const getListOfProducts = () => {
-        fetch('http://localhost:3000/listing/viewShop/:id', {
+        fetch('http://localhost:3000/listing/viewShop', {
             method: 'GET',
             headers:new Headers ({
                 'Content-Type': 'application/json',

@@ -100,7 +100,7 @@ export class RegisterForm extends React.Component<RegisterProps, RegisterState> 
               )}
             </div>
             <div className="submit">
-              <button>Register Now!</button>
+              <button className="buttonForm">Register Now!</button>
             </div>
           </form>
         </div>

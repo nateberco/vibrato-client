@@ -1,13 +1,19 @@
 import React, { useState, useEffect } from "react";
 import {
-  Navbar,
   Collapse,
-  NavItem,
-  Nav,
+  Navbar,
   NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  NavbarText
 
-} from "reactstrap";
-import { BrowserRouter as Router, Link } from "react-router-dom";
+} from 'reactstrap';
+
+import { Link } from "react-router-dom";
+import './Home.css'
+
 
 
 const Sitebar = (props: any) => {
@@ -34,7 +40,7 @@ const Sitebar = (props: any) => {
   }
 
   useEffect(() => {
-    if (localStorage.getItem("email")) {
+    if (localStorage.getItem("token")) {
         setShowLogOut(true);
     }
   }, [showLogOut]);
@@ -43,16 +49,21 @@ const Sitebar = (props: any) => {
 
   return (
     
-      <Navbar className="navbarCss " dark expand="md">
+      <Navbar 
+      className="navbarCss" 
+      dark expand="md"
+      >
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="ml-auto mr-auto" navbar>
+          <Nav 
+          className="ml-auto mr-auto" navbar
+          >
             <NavItem>
-              <Router>
+              
               <Link
                 onMouseOver={changeLink} onMouseLeave={resetLink}
                 style={{ color: "black" }}
-                className="text-decoration-none pl-5"
+                //className="text-decoration-none pl-5"
                 to="/"
               >
                 Home
@@ -60,18 +71,24 @@ const Sitebar = (props: any) => {
               <Link
                 onMouseOver={changeLink} onMouseLeave={resetLink}
                 style={{ color: "black" }}
-                className="text-decoration-none pl-5"
+                //className="text-decoration-none pl-5"
                 to="/myListings"
               >
                 My Listings
-              </Link>   
-              </Router>           
+              </Link>         
             </NavItem>
           </Nav>
         </Collapse>
+        
       </Navbar>
+      
+      
     
   );
 };
+
+////////
+
+
 
 export default Sitebar;

@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
+import { Route, Switch} from "react-router-dom";
 
 import SiteBar from "./Sitebar";
 import Home from "./Home";
 import ListingIndex from "../listing/ListingIndex";
 import Auth from '../auth/Auth';
+import HomeGalleryParent from '../listing/HomeGalleryParent';
 
 
 
@@ -28,7 +29,8 @@ const Routes = (props: any) => {
 
     const protectedViews = () => {
         return (
-          sessionToken === localStorage.getItem('token') ? <ListingIndex token={sessionToken}  setSessionToken={setSessionToken} updateToken={updateToken} /> : 
+          sessionToken  ? <ListingIndex token={sessionToken}  
+          /> : 
           <Auth updateToken={updateToken}/>
           
         )
@@ -36,11 +38,16 @@ const Routes = (props: any) => {
 
     return ( 
         <>
-        <SiteBar/>
+        <SiteBar />
         
         <Switch>
-            <Route exact path="/">
+
+            {/* <Route exact path="/">
                 <Home />
+            </Route> */}
+            
+            <Route exact path="/">
+                <HomeGalleryParent />
             </Route>
             <Route exact path="/myListings">
                 {protectedViews()}

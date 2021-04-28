@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Component } from 'react';
+// import { Component } from 'react';
+import '../home/Home.css'
 
 export interface Props {
     
@@ -17,7 +18,7 @@ class Home extends React.Component<Props, State> {
     render() { 
         return (
             <div>
-                <h1>THIS is HOME PAGE COMPONENT, hi </h1>
+                <h1 className="test">THIS is HOME PAGE COMPONENT, hi </h1>
             </div>
           );
     }

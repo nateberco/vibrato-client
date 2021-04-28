@@ -76,12 +76,8 @@ export class LoginForm extends React.Component<LoginProps, LoginState> {
   render() {
     // const { errors } = this.state; // taking errors out on Login Form since we don't need password validation
     return (
-      <div 
-      //className="wrapper"
-      >
-        <div 
-        //className="form-wrapper"
-        >
+      <div>
+        <div>
           <h2 className="header">Login</h2>
           <form onSubmit={this.handleSubmit} noValidate>
             <div className="username">
@@ -104,7 +100,7 @@ export class LoginForm extends React.Component<LoginProps, LoginState> {
               )} */}
             </div>
             <div className="submit">
-              <button>Log In!</button>
+              <button className="buttonForm">Log In!</button>
             </div>
           </form>
         </div>

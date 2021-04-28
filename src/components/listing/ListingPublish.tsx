@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import {Button, Form, FormGroup, Label, Input} from 'reactstrap';
+import {Button, Form, FormGroup, Label, Input, Container} from 'reactstrap';
+import './Listing.css';
 
 const ListingPublish = (props: any) => {
 
@@ -9,19 +10,48 @@ const ListingPublish = (props: any) => {
     const [category, setCategory] = useState('');
     const [keywords, setKeywords] = useState('');
 
+        /* **********
+    CLOUDINARY
+    *********** */
+    const [loading, setLoading] = useState(false);
+
+    const uploadImage = async (e: { target: { files: any; }; }) => {
+
+        const data = new FormData();
+        const files = e.target.files;
+        data.append('file', files[0]);
+        data.append('upload_preset', 'vibrato');
+        setLoading(true);
+        const res = await fetch(
+            'https://api.cloudinary.com/v1_1/natescloudinary/image/upload',
+            {
+                method: 'POST',
+                body: data
+            }
+        )
+        const file = await res.json();
+
+        setPhotoURL(file.secure_url);
+        setLoading(false);
+    }
+
+    /* **********
+    END CLOUDINARY
+    *********** */
+
     const handleSubmit = (e: any) => {
 
         e.preventDefault();
         fetch(`http://localhost:3000/listing/publish` , {
             method: 'POST',
             body: JSON.stringify({
-                product:{
+                
                     title: title,
                     description: description,
                     photoURL: photoURL,
                     category: category,
                     keywords: keywords
-                }
+                
             }),
             headers: new Headers({
                 'Content-Type': 'application/json',
@@ -36,54 +66,70 @@ const ListingPublish = (props: any) => {
             setPhotoURL('');
             setCategory('');
             setKeywords('');
-            // props.getListings();
 
         })
         .catch((err => { console.log(err);}))
     }
 
-    const onValueChange = (e: any) => {
-        e.target.value === 'category' ? setCategory('Gear') : setCategory("Service");
-        console.log('e.target.value', e.target.value);
+    function deleteImg(){
+        setPhotoURL('');
     }
 
+    // const onValueChange = (e: any) => {
+    //     e.target.value === 'category' ? setCategory('Gear') : setCategory("Service");
+    //     console.log('e.target.value', e.target.value);
+    // }
+
     return ( 
-        <>
-            <h4>New Listing?</h4>
-            <Form onSubmit={handleSubmit}>
-                <FormGroup>
+        <div className="listingWrapper">
+            <Container className="listingForm-wrapper">
+            <h4 className="listingHeader">New Listing?</h4>
+            <Form onSubmit={handleSubmit} >
+                <FormGroup className="title">
                     <Label htmlFor="title">Title</Label>
                     <Input name="title" value={title} onChange={(e) => setTitle(e.target.value)}/>
                 </FormGroup>
 
-                <FormGroup>
+                <FormGroup className="description">
                     <Label htmlFor="description">Description</Label>
-                    <Input name='description' value={description} onChange={(e) => setDescription(e.target.value)}/>
+                    <textarea className="descriptionInput" name='description' value={description} onChange={(e) => setDescription(e.target.value)}/>
                 </FormGroup>
-        
-                    
-                    <FormGroup >
-                    <Label htmlFor="category">Gear or Service?</Label>
-                        <Input type="radio" name="category" value='Service' defaultchecked onChange={(e) => onValueChange(e)}/>{' '}
-                        type
-                    
+                <FormGroup className="category">
+                    <Label htmlFor="category">Category
+                        <br/>
+                        {/* <Input name="category" value={category} onChange={(e) => setKeywords(e.target.value)} /> */}
+                        <input className="radioOptions"
+                            type="radio"
+                            value={category}
+                            name="content"
+                            id="show"
+                            onClick={() => setCategory("Gear")}
+                            // checked={category === "Gear"}
+                            />
+                            <label htmlFor="show">Gear</label>
+                        <br/>
+                            <input className="radioOptions"
+                            type="radio"
+                            value={category}
+                            name="content"
+                            id="hide"
+                            onClick={() => setCategory("Service")}
+                            // checked={category === "Service"}
+                            />
+                            <label htmlFor="hide">Service</label>
+                            </Label>
                 </FormGroup>
-                    <FormGroup >
-                    <Label >
-                        <Input name="category" value={category} onChange={(e) => setKeywords(e.target.value)} />
-                    </Label>
-                    </FormGroup>
 
 
-                {/* START CLOUDINARY          */}
-                {/* <FormGroup>
+                {/* START CLOUDINARY */}
+                <FormGroup>
                     <Label htmlFor="photoURL">Upload image</Label>
                     <Input type="file" onChange={uploadImage} />
-                    {loading ? <h6>Loading...</h6> : <img src={photoURL} style={{width:'120px'}} style={{height:'120px'}} alt=""/> } 
+                    {loading ? <h6>Loading...</h6> : <img src={photoURL} style={{width:'120px'}} alt=""/> } 
                     <br/>
                     <Button size= 'sm' color='outline-danger' disabled={loading || photoURL===''} onClick={deleteImg} >Delete image</Button>
-                </FormGroup>   */}
-                    {/* END CLOUDINARY          */}
+                </FormGroup>  
+                    {/* END CLOUDINARY */}
                     
 
                 {/* <FormGroup check>
@@ -93,22 +139,18 @@ const ListingPublish = (props: any) => {
                     </Label>
                 </FormGroup> */}
                 <br />
-                <div className='align-middle text-center'>
-                <Button  
-                    style={{width: 120, backgroundColor: "#f5f5f5", color: "black"}} 
+                <div className='submit'>
+                <Button className="listingButton"   
                     // disabled={loading} 
                     // onMouseOver={changeBtn} 
                     // onMouseLeave={resetBtn} 
                     type="submit">List it!</Button>
                 </div>
             </Form>
-        </>
+            </Container>
+        </div>
      );
-
-
-
-
-
 }
 
 export default ListingPublish;
+
