@@ -1,13 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Route, Switch} from "react-router-dom";
+import { Router, Route, Switch} from "react-router-dom";
+import { createBrowserHistory } from "history"
 
 import SiteBar from "./Sitebar";
-import Home from "./Home";
 import ListingIndex from "../listing/ListingIndex";
 import Auth from '../auth/Auth';
 import HomeGalleryParent from '../listing/HomeGalleryParent';
 
-
+const history = createBrowserHistory()
 
 const Routes = (props: any) => {
 
@@ -38,14 +38,10 @@ const Routes = (props: any) => {
 
     return ( 
         <>
-        <SiteBar />
-        
-        <Switch>
+        <Router history={history}>
+        <SiteBar history={history} />
 
-            {/* <Route exact path="/">
-                <Home />
-            </Route> */}
-            
+        <Switch>
             <Route exact path="/">
                 <HomeGalleryParent />
             </Route>
@@ -53,7 +49,7 @@ const Routes = (props: any) => {
                 {protectedViews()}
             </Route>
         </Switch>
-        
+        </Router>
         </>
      )
 }

@@ -9,6 +9,7 @@ import Routes from './components/home/Routes';
 function App() {
   return (
     <div>
+      
       <Router>
           <Routes />
       </Router>
