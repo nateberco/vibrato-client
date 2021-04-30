@@ -7,11 +7,13 @@ import "./Auth.css";
 
 export interface AuthProps {
   updateToken: Function;
+  updateUsername: Function;
 }
 
 export interface AuthState {
   sessionToken: string;
   displayLogin: boolean;
+  username: string;
 }
 
 export class Auth extends React.Component<AuthProps, AuthState> {
@@ -19,6 +21,7 @@ export class Auth extends React.Component<AuthProps, AuthState> {
     super(props);
     this.state = {
       sessionToken: "",
+      username: "",
       displayLogin: true
     };
   }
@@ -34,13 +37,6 @@ export class Auth extends React.Component<AuthProps, AuthState> {
       displayLogin: !(this.state.displayLogin)
     });
   };
-
-  clearToken = () => {
-    this.setState({
-      sessionToken: "",
-    })
-  };
-
 
   render() { 
     return ( 

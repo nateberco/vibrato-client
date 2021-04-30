@@ -12,6 +12,7 @@ const history = createBrowserHistory()
 const Routes = (props: any) => {
 
     const [sessionToken, setSessionToken] = useState("");
+    const [username, setUsername] = useState("");
     
     useEffect(() => {
         if (localStorage.getItem("token")) {
@@ -19,28 +20,42 @@ const Routes = (props: any) => {
         }
     }, []);
 
+    useEffect(() => {
+        if (localStorage.getItem("username")) {
+            setUsername(localStorage.getItem("username")|| '{}');
+        }
+    }, []);
 
-    const updateToken = (newToken: string) => {
+
+    const updateToken = (newToken: any) => {
         localStorage.setItem("token", newToken);
         setSessionToken(newToken);
         console.log(sessionToken);
     };
 
+    const updateUsername = (newUsername: any) => {
+        localStorage.setItem("username", newUsername);
+        setUsername(newUsername);
+        console.log(username);
+    };
 
     const protectedViews = () => {
         return (
-          sessionToken  ? <ListingIndex token={sessionToken}  
-          /> : 
-          <Auth updateToken={updateToken}/>
-          
-        )
-    }
+          sessionToken ? <ListingIndex 
+                            token={sessionToken} 
+                            username={username} 
+                            /> : 
+                        <Auth 
+                            updateToken={updateToken} 
+                            updateUsername={updateUsername}/>
+                    )
+                }
 
     return ( 
         <>
-        <Router history={history}>
+        <Router history={history} >
         <SiteBar history={history} />
-
+        
         <Switch>
             <Route exact path="/">
                 <HomeGalleryParent />

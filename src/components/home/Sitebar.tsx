@@ -49,7 +49,6 @@ const Sitebar = (props: any) => {
   }, [showLogOut]);
 
   const clearToken = (e: { preventDefault: () => void; }) => {
-    e.preventDefault()
     localStorage.clear();
     setSessionToken('');
     console.log("Logged out");

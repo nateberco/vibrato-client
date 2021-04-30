@@ -39,7 +39,7 @@ const ListingPublish = (props: any) => {
     END CLOUDINARY
     *********** */
 
-    const handleSubmit = (e: any) => {
+    const handleSubmit = (e: React.SyntheticEvent) => {
 
         e.preventDefault();
         fetch(`http://localhost:3000/listing/publish` , {

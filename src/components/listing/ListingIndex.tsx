@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import {Container, Row, Col} from 'reactstrap';
+import {Button, Container, Row, Col, CardDeck} from 'reactstrap';
 import ListingPublish from './ListingPublish';
+import MyListingsView from './MyListingsView';
 
 
 const ListingIndex = (props: any) => {
@@ -9,7 +10,7 @@ const ListingIndex = (props: any) => {
     const [updateActive, setUpdateActive] = useState(false);
     const [listingToUpdate, setListingToUpdate] = useState({});
 
-    const getListOfProducts = () => {
+    const getListings = () => {
         fetch('http://localhost:3000/listing/viewShop', {
             method: 'GET',
             headers:new Headers ({
@@ -37,26 +38,37 @@ const ListingIndex = (props: any) => {
     //     setUpdateActive(false);
     // }
 
-
     useEffect( () => {
-        getListOfProducts();
+        getListings();
     }, [])
+
+    //USE THESE TO DISPLAY USERNAME OF SHOP !!
+    function whoIsConnected(){
+        localStorage.getItem("username");
+    }
+
+    useEffect(() => {
+        whoIsConnected()
+    }, []);
 
 
     return ( 
         <>
+<h6 className='font-italic' style={{color: "#91a597"}}>{localStorage.getItem("username")}'s Listings</h6>
 
         <Container>
             <Row>
                 <Col md="3">
-                
-                    <ListingPublish getListOfProducts={getListOfProducts} token={props.token}/>
+            
+                    <ListingPublish getListOfProducts={getListings} token={props.token} username={props.username}/>
                    
                 </Col>
-                {/* <Col md="9" className='text-center'>
-                    <ProductView getListOfProducts={getListOfProducts} productList={productList} editUpdateProduct={editUpdateProduct} updateOn={updateOn} token={props.token}/>
+                <Col md="9" className='text-center'>
+                    <MyListingsView getListings={getListings} listings={listings} 
+                    // editUpdateProduct={editUpdateProduct} updateOn={updateOn} token={props.token}
+                    />
                 </Col>
-                <Col>
+                {/* <Col>
                 {updateActive ? <ProductEdit productToUpdate={productToUpdate} updateOff={updateOff} token={props.token} getListOfProducts={getListOfProducts}/> : <></>}
                 </Col> */}
             </Row>
