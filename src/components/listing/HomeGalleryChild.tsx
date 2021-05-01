@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import React from 'react';
 import { withRouter } from "react-router-dom";
 import { Card, Button, CardImg, CardTitle, CardText, CardSubtitle, CardBody, Row, Col,  Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-
+import MessageCreate from '../messaging/MessageCreate';
 
 const HomeGalleryChild = (props: any) => {
 
@@ -13,6 +13,7 @@ const HomeGalleryChild = (props: any) => {
 
   // to display the close button on Modal form
   const [modal, setModal] = useState(false);
+  const [showMessageBox, setShowMessageBox] = useState(false);
   const toggle = () => setModal(!modal);
 
 //   used in case no picture set in the card 
@@ -45,7 +46,6 @@ const HomeGalleryChild = (props: any) => {
           <Button style={{background: "#4A5759"}} onMouseOver={changeBtn} onMouseLeave={resetBtn} onClick={toggle}>{buttonLabel}See Full Description</Button> 
         </CardBody>
       </Card>
-
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader style={{backgroundColor: "#f7e1d7" , textAlign: "center", height: 90, borderRadius: 10}} toggle={toggle}>
           {props.listingItem.title}
@@ -54,15 +54,17 @@ const HomeGalleryChild = (props: any) => {
         <img src={props.listingItem.photoURL} alt="listing" width="370" height="310" style={{padding:20}} onError = {errorHandling}/>
         </Row>
         <ModalBody style={{textAlign: "center"}}>
-          <CardSubtitle tag="h6" className="mb-2 text-muted">${props.listingItem.category}</CardSubtitle>
+          <CardSubtitle tag="h6" className="mb-2 text-muted">{props.listingItem.category}</CardSubtitle>
           <CardText>
             {props.listingItem.description}{' '}
           </CardText>
+          {showMessageBox? <MessageCreate ownerId={props.listingItem.userId} token={props.token} /> : null}
         </ModalBody>
         <ModalFooter style={{backgroundColor: "#f7e1d7", marginLeft: 0, marginRight: 0}}>
           <Button 
           style={{backgroundColor: "#4a5759", color: "white", width: 150, height: 40, textAlign: "center", marginLeft: "auto", marginRight: "auto"}} 
           onMouseOver={changeBtn} onMouseLeave={resetBtn} onClick={toggle}>Close</Button>{' '}
+          { props.token ? <Button onClick={() => setShowMessageBox(!showMessageBox)} >Message Seller</Button> : null}
         </ModalFooter>
       </Modal>
 

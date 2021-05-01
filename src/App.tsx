@@ -4,15 +4,15 @@ import { BrowserRouter as Router } from "react-router-dom";
 // import './App.css';
 
 import Routes from './components/home/Routes';
+// import MessageCreate from './components/messaging/MessageCreate';
 
 
 function App() {
   return (
     <div>
+
+      <Routes />
       
-      <Router>
-          <Routes />
-      </Router>
 
     </div>
   );

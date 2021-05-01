@@ -7,6 +7,8 @@ import ListingIndex from "../listing/ListingIndex";
 import Auth from '../auth/Auth';
 import HomeGalleryParent from '../listing/HomeGalleryParent';
 
+import MessageIndex from '../messaging/MessageIndex';
+
 const history = createBrowserHistory()
 
 const Routes = (props: any) => {
@@ -15,16 +17,17 @@ const Routes = (props: any) => {
     const [username, setUsername] = useState("");
     
     useEffect(() => {
-        if (localStorage.getItem("token")) {
-        setSessionToken(localStorage.getItem('token') || '{}');
+        let token = localStorage.getItem("token") 
+        if (token) {
+        setSessionToken(token);
         }
     }, []);
 
-    useEffect(() => {
-        if (localStorage.getItem("username")) {
-            setUsername(localStorage.getItem("username")|| '{}');
-        }
-    }, []);
+    // useEffect(() => {
+    //     if (localStorage.getItem("username")) {
+    //         setUsername(localStorage.getItem("username")|| '{}');
+    //     }
+    // }, []);
 
 
     const updateToken = (newToken: any) => {
@@ -39,7 +42,7 @@ const Routes = (props: any) => {
         console.log(username);
     };
 
-    const protectedViews = () => {
+    const protectedViewsListings = () => {
         return (
           sessionToken ? <ListingIndex 
                             token={sessionToken} 
@@ -47,7 +50,20 @@ const Routes = (props: any) => {
                             /> : 
                         <Auth 
                             updateToken={updateToken} 
-                            updateUsername={updateUsername}/>
+                            updateUsername={updateUsername}
+                            />
+                    )
+                }
+
+        const protectedViewsMessages = () => {
+        return (
+          sessionToken ? <MessageIndex 
+                        token={sessionToken} 
+                        /> :
+                        <Auth 
+                            updateToken={updateToken} 
+                            updateUsername={updateUsername}
+                            />
                     )
                 }
 
@@ -58,10 +74,15 @@ const Routes = (props: any) => {
         
         <Switch>
             <Route exact path="/">
-                <HomeGalleryParent />
+                <HomeGalleryParent token={sessionToken}/>
             </Route>
+
             <Route exact path="/myListings">
-                {protectedViews()}
+                {protectedViewsListings()}
+            </Route>
+
+            <Route exact path="/messages">
+                {protectedViewsMessages()}
             </Route>
         </Switch>
         </Router>

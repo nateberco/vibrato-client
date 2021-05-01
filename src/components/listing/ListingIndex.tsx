@@ -4,6 +4,7 @@ import ListingPublish from './ListingPublish';
 import MyListingsView from './MyListingsView';
 
 
+
 const ListingIndex = (props: any) => {
 
     const [listings, setListings] = useState([]);
@@ -21,7 +22,7 @@ const ListingIndex = (props: any) => {
         .then( (res) => res.json())
         .then((Listings) => {
             setListings(Listings);
-            console.log('list of product from index -->', Listings);
+            console.log('Listings in this shop -->', Listings);
         })
     }
 

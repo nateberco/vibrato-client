@@ -26,11 +26,11 @@ export class Auth extends React.Component<AuthProps, AuthState> {
     };
   }
 
-  // updateToken = (sessionToken: string) => {
-  //   localStorage.setItem("token", sessionToken);
-  //   this.setState({ sessionToken: sessionToken });
-  //   console.log(sessionToken);
-  // };
+  updateToken = (sessionToken: string) => {
+    localStorage.setItem("token", sessionToken);
+    this.setState({ sessionToken: sessionToken });
+    console.log(sessionToken);
+  };
 
   toggle = () => {
     this.setState({

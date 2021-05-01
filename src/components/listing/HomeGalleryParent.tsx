@@ -4,6 +4,7 @@ import {CardDeck} from 'reactstrap';
 
 
 
+
 const HomeGalleryParent = (props:any) => {
 
     const [listings, setListings] = useState([])
@@ -30,7 +31,7 @@ const HomeGalleryParent = (props:any) => {
     
 
     function displayCards(){
-        return listings.length > 0 ? listings.map(listings => <HomeGalleryChild listingItem = {listings} />) : null;
+        return listings.length > 0 ? listings.map(listings => <HomeGalleryChild token={props.token} listingItem = {listings} />) : null;
     }
 
 

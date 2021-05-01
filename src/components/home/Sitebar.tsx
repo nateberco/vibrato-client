@@ -92,6 +92,11 @@ const Sitebar = (props: any) => {
                 to="/myListings"
               >My Listings</NavLink>
             </NavItem>
+            <NavItem id="sitebarHome">
+              <NavLink id="sitebarHome" onMouseOver={changeLink} onMouseLeave={resetLink}
+                to="/messages"
+              >Messages</NavLink>
+            </NavItem>
           </Nav>
           <NavbarBrand style={{color: "#f57e7e", fontSize: "20px"}} href="/"onMouseOver={changeLink} 
               onMouseLeave={resetLink} size="sm" onClick={clearToken} >Log Out</NavbarBrand>
