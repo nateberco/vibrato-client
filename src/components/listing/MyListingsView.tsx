@@ -4,7 +4,7 @@ import MyPageCards from "./MyListingCards";
 
 const MyListingsView = (props: any) => {
   const deleteListing = (listing: { id: any; }) => {
-    fetch(`http://localhost:3000/listing/${listing.id}`, {
+    fetch(`http://localhost:3000/listing/delete/${listing.id}`, {
       method: "DELETE",
       headers: new Headers({
         "Content-Type": "application/json",
@@ -15,16 +15,16 @@ const MyListingsView = (props: any) => {
     });
   };
 
-//   function changeBtn(e: any) {
-//     // e.target.style.fontSize = 'larger';
-//     e.target.style.color = '#f7e1d7';
-//     e.target.style.fontWeight = 'bold';
-//   }
+  function changeBtn(e: any) {
+    // e.target.style.fontSize = 'larger';
+    e.target.style.color = '#f7e1d7';
+    e.target.style.fontWeight = 'bold';
+  }
 
-//   function resetBtn(e: any) {
-//     e.target.style.fontWeight = 'initial';
-//     e.target.style.color = 'white';
-//   }
+  function resetBtn(e: any) {
+    e.target.style.fontWeight = 'initial';
+    e.target.style.color = 'white';
+  }
 
   const listingsMapper = () => {
     return props.listings.map((listing: any, index: any) => {
@@ -36,8 +36,8 @@ const MyListingsView = (props: any) => {
             <div className="flexbox-container">
                 <div className="flexbox-item-1">
                   <Button
-                    style={{ backgroundColor: "#b0c4b1", marginRight: 5, width: 100 }}
-                    //onMouseOver={changeBtn} onMouseLeave={resetBtn}
+                    style={{ backgroundColor: "#b0c4b1", marginRight: 5, width: 50 }}
+                    onMouseOver={changeBtn} onMouseLeave={resetBtn}
                     onClick={() => {
                       props.editUpdateListing(listing);
                       props.updateOn();
@@ -48,8 +48,8 @@ const MyListingsView = (props: any) => {
                 </div>
                 <div className="flexbox-item-2">
                   <Button
-                    style={{ backgroundColor: "#4a5759", marginLeft: 5, width: 100}}
-                    //onMouseOver={changeBtn} onMouseLeave={resetBtn}
+                    style={{ backgroundColor: "#4a5759", marginLeft: 5, width: 75}}
+                    onMouseOver={changeBtn} onMouseLeave={resetBtn}
                     onClick={() => {
                       deleteListing(listing);
                     }}

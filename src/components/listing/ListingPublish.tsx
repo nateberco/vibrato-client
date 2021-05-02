@@ -154,3 +154,18 @@ const ListingPublish = (props: any) => {
 
 export default ListingPublish;
 
+// INTERFACES
+
+export interface ListingPublishProps {
+    id: number;
+    title: string;
+    description: string;
+    photoURL: string;
+    category: string;
+    keywords: string;
+    userId: number;
+    updatedAt: Date;
+    createdAt: Date;
+}
+
+

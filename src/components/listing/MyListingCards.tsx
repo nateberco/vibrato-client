@@ -16,10 +16,10 @@ const MyPageCards = (props: any) => {
 
   return ( 
     <div>
-      <Card style={{width: 810,  height: 255, backgroundColor: "#f5f5f5"}}>
+      <Card id="container-MyListingsCards" style={{width: 800,  height: 400, backgroundColor: "#f5f5f5"}}>
         <CardBody id="container-MyPageCards" >
           <div className="img1">
-          <CardImg src={props.listingItem.photoURL} alt="card image" style={{width: 286, height: 255, padding: 10, borderRadius: 10}} 
+          <CardImg src={props.listingItem.photoURL} alt="card image" style={{width: 200, height: 200, padding: 10, borderRadius: 10}} 
           onError = {errorHandling}
           /> 
           </div>

@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {Button, Container, Row, Col, CardDeck} from 'reactstrap';
 import ListingPublish from './ListingPublish';
 import MyListingsView from './MyListingsView';
+import ListingEdit from './ListingEdit';
 
 
 
@@ -26,18 +27,18 @@ const ListingIndex = (props: any) => {
         })
     }
 
-    // const editUpdateProduct = (product: any) => {
-    //     setProductToUpdate(product);
-    //     console.log(product);
-    // }
+    const editUpdateListing = (listing: any) => {
+        setListingToUpdate(listing);
+        console.log(listing);
+    }
 
-    // const updateOn = () => {
-    //     setUpdateActive(true);
-    // }
+    const updateOn = () => {
+        setUpdateActive(true);
+    }
 
-    // const updateOff = () => {
-    //     setUpdateActive(false);
-    // }
+    const updateOff = () => {
+        setUpdateActive(false);
+    }
 
     useEffect( () => {
         getListings();
@@ -45,7 +46,7 @@ const ListingIndex = (props: any) => {
 
     //USE THESE TO DISPLAY USERNAME OF SHOP !!
     function whoIsConnected(){
-        localStorage.getItem("username");
+        localStorage.getItem("user.username");
     }
 
     useEffect(() => {
@@ -55,23 +56,23 @@ const ListingIndex = (props: any) => {
 
     return ( 
         <>
-<h6 className='font-italic' style={{color: "#91a597"}}>{localStorage.getItem("username")}'s Listings</h6>
+<h6 className='font-italic' style={{color: "#91a597"}}>{localStorage.getItem("user.username")}'s Listings</h6>
 
         <Container>
             <Row>
                 <Col md="3">
             
-                    <ListingPublish getListOfProducts={getListings} token={props.token} username={props.username}/>
+                    <ListingPublish getListings={getListings} token={props.token} username={props.username}/>
                    
                 </Col>
                 <Col md="9" className='text-center'>
                     <MyListingsView getListings={getListings} listings={listings} 
-                    // editUpdateProduct={editUpdateProduct} updateOn={updateOn} token={props.token}
+                    editUpdateListing={editUpdateListing} updateOn={updateOn} token={props.token}
                     />
                 </Col>
-                {/* <Col>
-                {updateActive ? <ProductEdit productToUpdate={productToUpdate} updateOff={updateOff} token={props.token} getListOfProducts={getListOfProducts}/> : <></>}
-                </Col> */}
+                <Col>
+                {updateActive ? <ListingEdit listingToUpdate={listingToUpdate} updateOff={updateOff} token={props.token} getListings={getListings}/> : <></>}
+                </Col>
             </Row>
             <br/>
         </Container>
