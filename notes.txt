@@ -1,0 +1,3 @@
+dark #315f72
+med #f57e7e
+light #efb5a3

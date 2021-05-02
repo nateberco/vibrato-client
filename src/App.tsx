@@ -1,14 +1,19 @@
 import React from 'react';
+import { BrowserRouter as Router } from "react-router-dom";
 // import logo from './logo.svg';
 // import './App.css';
 
-import { RegisterForm } from './components/RegisterForm';
+import Routes from './components/home/Routes';
+// import MessageCreate from './components/messaging/MessageCreate';
 
 
 function App() {
   return (
     <div>
-      <RegisterForm />
+
+      <Routes />
+      
+
     </div>
   );
 }
