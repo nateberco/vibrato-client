@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import {Button, Container, Row, Col, CardDeck} from 'reactstrap';
+import {Button, Container, Row, Col, Modal, ModalHeader, ModalFooter, ModalBody, ListGroup, ListGroupItem} from 'reactstrap';
 import MessageCreate from './MessageCreate';
+import MessageRespond from './MessageRespond';
+
+import './Message.css'; 
 
 
 
@@ -25,8 +28,6 @@ const MessageIndex = (props: any) => {
         })
     }
 
-
-
     useEffect( () => {
         getConversations();
     }, [])
@@ -46,6 +47,17 @@ const MessageIndex = (props: any) => {
             })
         }
 
+        // MODAL FOR OPENING CONVOS
+        const {
+            classModal
+          } = props;
+
+          const [modal, setModal] = useState(false);
+
+          const toggle = () => 
+          setModal(!modal);
+            
+
 
 
     return ( 
@@ -53,38 +65,51 @@ const MessageIndex = (props: any) => {
 <h6 className='font-italic' style={{color: "#91a597"}}>My Messages</h6>
 
         <Container>
-            <Row>
-                <Col md="3">
             
-                    <MessageCreate getMessages={getConversations} token={props.token}/>
-                   <ul>
-                       {conversations!==undefined ? 
+            
+            {/* <MessageCreate getMessages={getConversations} token={props.token}/> */}
+
+            <div>
+            {conversations!==undefined ? 
                        conversations.conversation.map((conversation, index) => {
                            return(
                                <li onClick={ ()=> viewMessage(conversation.id)}> 
-                               
-                                   {conversation.id}
-                               </li>
+                            <div>
+                                <Button color="danger" onClick={toggle}>
+                                    {conversation.id}
+                                </Button>
+                                <Modal isOpen={modal} toggle={toggle} className={classModal}>
+                                <ModalHeader toggle={toggle}>Conversation with (USERNAME??)</ModalHeader>
+                                <ModalBody>
+                                    <ListGroup className="message-list-group">
+                                        {messages!==undefined ? 
+                                        messages.messages.map((message, index) => {
+                                        return(
+                                        
+                                        // onClick={ ()=> viewMessage(message.id)} -- in case you want to edit, delete, etc
+                                        <ListGroupItem className="">
+                                        {message.content}
+                                        </ListGroupItem>
+                                        
+                                        )
+                                        }): null }
+                                     </ListGroup>
+                                </ModalBody>
+                                <ModalFooter>
+                                {/* <Button color="primary" onClick={toggle}>Do Something</Button>{' '} */}
+                                <div>
+                                <MessageRespond className="message-respond-form" getMessages={getConversations} token={props.token}/>
+                                </div>
+                                </ModalFooter>
+                                </Modal>
+                                </div>
+                                   
+                                </li>
                            )
                        }): null }
-                   </ul>
-                   <br/>
-                   <ul>
-                       {messages!==undefined ? 
-                       messages.messages.map((message, index) => {
-                           return(
-                               <li 
-                               // onClick={ ()=> viewMessage(message.id)} -- in case you want to edit, delete, etc
-                               >
-                                   {message.content}
-                               </li>
-                           )
-                       }): null }
-                   </ul>
-                </Col>
-            
-            </Row>
-            <br/>
+
+            </div>
+               
         </Container>
         </>
      );

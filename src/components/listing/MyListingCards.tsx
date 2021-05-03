@@ -25,7 +25,8 @@ const MyPageCards = (props: any) => {
           </div>
           <div className="description" style={{padding: 15}}>
           <CardTitle style={{fontSize: 25}} tag="h5">{props.listingItem.title}</CardTitle>
-          <CardSubtitle tag="h6" className="mb-2 text-muted">{props.listingItem.description}</CardSubtitle>
+          <CardSubtitle tag="h6" className="mb-2 text-muted">Description: {props.listingItem.description}</CardSubtitle>
+          <CardText tag="h6" className="mb-2 text-muted">Category: {props.listingItem.category}</CardText>
           </div>
         </CardBody>
       </Card>

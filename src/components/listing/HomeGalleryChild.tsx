@@ -5,6 +5,7 @@ import { Card, Button, CardImg, CardTitle, CardText, CardSubtitle, CardBody, Row
 import MessageCreate from '../messaging/MessageCreate';
 import Auth from  '../auth/Auth';
 
+
 const HomeGalleryChild = (props: any) => {
 
   const {
@@ -45,8 +46,6 @@ const HomeGalleryChild = (props: any) => {
         />
         <CardBody className="CardBody" style = {{background: "white"}} >
           <CardTitle tag="h5" style={{fontSize: 17}}>{props.listingItem.title}</CardTitle>
-          <CardSubtitle tag="h6" className="mb-2 text-muted">{props.listingItem.description}</CardSubtitle>
-          
           <Button style={{background: "#4A5759"}} onMouseOver={changeBtn} onMouseLeave={resetBtn} onClick={toggle}>{buttonLabel}See Full Description</Button> 
         </CardBody>
       </Card>
@@ -58,56 +57,52 @@ const HomeGalleryChild = (props: any) => {
         <img src={props.listingItem.photoURL} alt="listing" width="370" height="310" style={{padding:20}} onError = {errorHandling}/>
         </Row>
         <ModalBody style={{textAlign: "center"}}>
-          <CardSubtitle tag="h6" className="mb-2 text-muted">{props.listingItem.category}</CardSubtitle>
           <CardText>
             {props.listingItem.description}{' '}
           </CardText>
-
-{/* TERNARY TO OPEN MESSAGING OR LOG IN/REGISTER !!! */}
-          {showMessageBox? <MessageCreate ownerId={props.listingItem.userId} token={props.token} /> 
-            : <Button style={{background: "#4A5759"}} onMouseOver={changeBtn} onMouseLeave={resetBtn} onClick={metaToggle}>{buttonLabel}Sign in or Register HERE to Message Seller</Button> }
-          {/* {showMessageBox? <MessageCreate ownerId={props.listingItem.userId} token={props.token} /> : null} */}
+        <CardText tag="h6" className="mb-2 text-muted">Category: {props.listingItem.category}</CardText>
 
 {/* START META AUTH MODAL */}
 <Modal isOpen={metaModal} toggle={metaToggle} className={className}>
         <ModalHeader style={{backgroundColor: "#f7e1d7" , textAlign: "center", height: 90, borderRadius: 10}} toggle={metaToggle}>
-          {props.listingItem.title}
+          HEADER
         </ModalHeader>
-        <Row className="justify-content-center">
-        <img src={props.listingItem.photoURL} alt="listing" width="370" height="310" style={{padding:20}} onError = {errorHandling}/>
-        </Row>
         <ModalBody style={{textAlign: "center"}}>
-          <CardSubtitle tag="h6" className="mb-2 text-muted">{props.listingItem.category}</CardSubtitle>
-          <CardText>
-            {props.listingItem.description}{' '}
-          </CardText>
+
+          <Auth 
+              updateToken={props.updateToken} 
+              updateUsername={props.updateUsername}
+          />
 
         </ModalBody>
-        <ModalFooter style={{backgroundColor: "#f7e1d7", marginLeft: 0, marginRight: 0}}>
-          <Button 
-          style={{backgroundColor: "#4a5759", color: "white", width: 150, height: 40, textAlign: "center", marginLeft: "auto", marginRight: "auto"}} 
-          onMouseOver={changeBtn} onMouseLeave={resetBtn} onClick={toggle}>Close</Button>{' '}
-          { props.token ? <Button onClick={() => setShowMessageBox(!showMessageBox)} >Message Seller</Button> : null}
-        </ModalFooter>
+        
       </Modal>
 
 {/* END META AUTH MODAL */}
 
         </ModalBody>
         <ModalFooter style={{backgroundColor: "#f7e1d7", marginLeft: 0, marginRight: 0}}>
+        {/* TERNARY TO OPEN MESSAGING OR LOG IN/REGISTER !!! */}
           <Button 
           style={{backgroundColor: "#4a5759", color: "white", width: 150, height: 40, textAlign: "center", marginLeft: "auto", marginRight: "auto"}} 
           onMouseOver={changeBtn} onMouseLeave={resetBtn} onClick={toggle}>Close</Button>{' '}
           { props.token ? <Button onClick={() => setShowMessageBox(!showMessageBox)} >Message Seller</Button> : null}
+          { !props.token ? <Button style={{background: "#4A5759"}} onMouseOver={changeBtn} onMouseLeave={resetBtn} onClick={metaToggle}>{buttonLabel}Sign in or Register HERE to Message Seller</Button> : null}
+          
+          {showMessageBox? <MessageCreate ownerId={props.listingItem.userId} token={props.token} /> :null}
+
+          {/* {showMessageBox? <MessageCreate ownerId={props.listingItem.userId} token={props.token} /> 
+            : <Button style={{background: "#4A5759"}} onMouseOver={changeBtn} onMouseLeave={resetBtn} onClick={metaToggle}>{buttonLabel}Sign in or Register HERE to Message Seller</Button> } */}
+
         </ModalFooter>
       </Modal>
 
      
 
-        </div>
+    </div>
 
-      );
-    };
+    );
+};
 
  
 export default HomeGalleryChild;

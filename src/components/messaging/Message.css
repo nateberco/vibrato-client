@@ -1,0 +1,22 @@
+.message-list-group {
+  display: flex;
+  color: green;
+  display: inline-block;
+  width: 90%;
+  max-width: 91%;
+  word-wrap: break-word;
+}
+
+.message-button-respond {
+  max-height: 35px;
+  margin-left: 40px;
+  justify-content: right;
+  align-content: right;
+}
+
+.message-respond-text-box {
+  width: 350px;
+  display: flex;
+  border: solid 1px green;
+  border-radius: 5px;
+}

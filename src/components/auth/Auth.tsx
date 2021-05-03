@@ -4,6 +4,7 @@ import { RegisterForm } from "./RegisterForm";
 import { LoginForm } from "./LoginForm";
 import {Container, Row, Col} from 'reactstrap';
 import "./Auth.css";
+import HomeGalleryChild from '../listing/HomeGalleryChild';
 
 export interface AuthProps {
   updateToken: Function;
