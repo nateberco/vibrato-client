@@ -72,6 +72,8 @@ const HomeGalleryChild = (props: any) => {
           <Auth 
               updateToken={props.updateToken} 
               updateUsername={props.updateUsername}
+              metaToggle={metaToggle}
+              origin="gallery"
           />
 
         </ModalBody>

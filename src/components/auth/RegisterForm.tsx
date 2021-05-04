@@ -4,6 +4,8 @@ import React from "react";
 
 interface RegisterProps {
   updateToken: Function;
+  origin?: string;
+  metaToggle?: Function;
 }
 
 interface RegisterState {
@@ -65,6 +67,9 @@ export class RegisterForm extends React.Component<RegisterProps, RegisterState> 
         .then((data) => {
           this.props.updateToken(data.sessionToken); //may be token
           console.log(data);
+          if(this.props.origin === "gallery" && this.props.metaToggle !== undefined) {
+            this.props.metaToggle()
+          }
         });
       console.log("Registration Successful!");
     } else {

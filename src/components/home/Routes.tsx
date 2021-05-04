@@ -74,7 +74,7 @@ const Routes = (props: any) => {
         
         <Switch>
             <Route exact path="/">
-                <HomeGalleryParent token={sessionToken}/>
+                <HomeGalleryParent updateToken={updateToken} token={sessionToken}/>
             </Route>
 
             <Route exact path="/myListings">

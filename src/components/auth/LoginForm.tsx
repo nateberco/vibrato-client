@@ -5,6 +5,8 @@ import "../../App.css";
 
 interface LoginProps {
   updateToken: Function;
+  origin?: string;
+  metaToggle?: Function;
 }
 
 interface LoginState {
@@ -67,6 +69,9 @@ export class LoginForm extends React.Component<LoginProps, LoginState> {
         .then((data) => {
           this.props.updateToken(data.sessionToken); //may be token
           console.log(data);
+          if(this.props.origin === "gallery" && this.props.metaToggle !== undefined) {
+            this.props.metaToggle()
+          }
         });
       console.log("Login Successful!");
     } else {

@@ -24,6 +24,7 @@ const MessageIndex = (props: any) => {
         .then( (res) => res.json())
         .then((Messages) => {
             setConversations(Messages);
+            // set replyTo 
             console.log('list of product from index -->', Messages);
         })
     }
@@ -32,7 +33,8 @@ const MessageIndex = (props: any) => {
         getConversations();
     }, [])
 
-    function viewMessage (id: number) {
+    function viewMessage (id: number, replyTo: number) {
+            // setReplyTo(replyTo)
             fetch(`http://localhost:3000/message/viewMessages/${id}`, {
                 method: 'GET',
                 headers:new Headers ({
@@ -43,6 +45,7 @@ const MessageIndex = (props: any) => {
             .then( (res) => res.json())
             .then((Messages) => {
                 setMessages(Messages);
+                
                 console.log('list of messages from index -->', Messages);
             })
         }
@@ -73,7 +76,7 @@ const MessageIndex = (props: any) => {
             {conversations!==undefined ? 
                        conversations.conversation.map((conversation, index) => {
                            return(
-                               <li onClick={ ()=> viewMessage(conversation.id)}> 
+                               <li onClick={ ()=> viewMessage(conversation.id, conversations.replyTo[index])}> 
                             <div>
                                 <Button color="danger" onClick={toggle}>
                                     {conversation.id}
@@ -157,6 +160,7 @@ export default MessageIndex;
         user: User[];
         conversation: Conversation[];
         messages: Message[];
+        replyTo: number[];
     }
 
 

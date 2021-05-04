@@ -31,7 +31,7 @@ const HomeGalleryParent = (props:any) => {
     
 
     function displayCards(){
-        return listings.length > 0 ? listings.map(listings => <HomeGalleryChild token={props.token} listingItem = {listings} />) : null;
+        return listings.length > 0 ? listings.map(listings => <HomeGalleryChild updateToken={props.updateToken} token={props.token} listingItem = {listings} />) : null;
     }
 
 

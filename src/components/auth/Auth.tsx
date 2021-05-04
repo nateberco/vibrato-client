@@ -9,6 +9,8 @@ import HomeGalleryChild from '../listing/HomeGalleryChild';
 export interface AuthProps {
   updateToken: Function;
   updateUsername: Function;
+  origin?: string;
+  metaToggle?: Function; 
 }
 
 export interface AuthState {
@@ -45,8 +47,8 @@ export class Auth extends React.Component<AuthProps, AuthState> {
         <Container className="authForm-wrapper">
             <div>
             <Row >
-                {this.state.displayLogin ? <LoginForm updateToken = {this.props.updateToken}/> : 
-                        <RegisterForm updateToken = {this.props.updateToken}/> }
+                {this.state.displayLogin ? <LoginForm origin={this.props.origin} metaToggle={this.props.metaToggle} updateToken = {this.props.updateToken}/> : 
+                        <RegisterForm origin={this.props.origin} metaToggle={this.props.metaToggle} updateToken = {this.props.updateToken}/> }
             </Row>
             <Row   >
                 <Col className="authForm-toggler">
