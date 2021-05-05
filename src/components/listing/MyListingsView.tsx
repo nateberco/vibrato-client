@@ -67,7 +67,7 @@ const MyListingsView = (props: any) => {
 
   return (
     <>
-      <h3 id="myShopHeader">My Listings</h3>
+      <h1 style={{color: "#91a597"}}>{localStorage.getItem("username")}'s Listings</h1>
       <br />
       <Table>
         <tbody>

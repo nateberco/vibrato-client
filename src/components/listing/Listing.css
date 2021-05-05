@@ -59,7 +59,7 @@
 }
 
 .listingButton:hover {
-  background-color: rgb(30, 109, 50);
+  background-color: rgb(15, 56, 40);
   color: #fefefe;
 }
 
@@ -76,4 +76,36 @@
 
 #container-MyListingsCards {
   display: flex;
+}
+
+.child-card-image {
+  display: flex;
+  max-height: 40vh;
+  justify-content: center;
+  border: 2px solid #315f72;
+}
+
+.CardBody {
+  background-color: white;
+  justify-content: center;
+}
+
+.cardDeckCss {
+  position: relative;
+}
+
+.CardCss {
+  margin-left: 10px;
+  text-align: center;
+  width: 300px;
+  height: 400px;
+  padding: 10px;
+  margin-bottom: 20;
+  box-shadow: #efb5a3 4px 4px;
+  border: 2px solid #f57e7e;
+}
+
+.child-card-title {
+  color: #315f72;
+  font-size: 20px;
 }

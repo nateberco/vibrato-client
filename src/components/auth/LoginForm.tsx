@@ -67,7 +67,9 @@ export class LoginForm extends React.Component<LoginProps, LoginState> {
       })
         .then((response) => response.json())
         .then((data) => {
-          this.props.updateToken(data.sessionToken); //may be token
+          localStorage.setItem("userId", data.user.id)
+          localStorage.setItem("username", data.user.username)
+          this.props.updateToken(data.sessionToken); 
           console.log(data);
           if(this.props.origin === "gallery" && this.props.metaToggle !== undefined) {
             this.props.metaToggle()
@@ -88,7 +90,7 @@ export class LoginForm extends React.Component<LoginProps, LoginState> {
             <div className="username">
               <label htmlFor="username">username</label>
               <input
-                type="username"
+                type="text"
                 name="username"
                 onChange={this.handleChange}
               />

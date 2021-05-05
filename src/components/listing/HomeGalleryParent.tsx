@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import HomeGalleryChild from './HomeGalleryChild';
-import {CardDeck} from 'reactstrap';
+import {CardDeck, Container, Col, Row} from 'reactstrap';
 
 
 
@@ -37,11 +37,11 @@ const HomeGalleryParent = (props:any) => {
 
     return (     
         <>    
-            
-        <CardDeck className="cardDeckCss" style={{justifyContent: 'center', width: "auto" , marginBottom: 20}}>
-            {displayCards()}
-        </CardDeck>
-      
+        
+                <CardDeck className="cardDeckCss" style={{justifyContent: 'center', width: "auto" , marginBottom: 20,}}>
+                    {displayCards()}
+                </CardDeck>
+                
        </>
 
     )

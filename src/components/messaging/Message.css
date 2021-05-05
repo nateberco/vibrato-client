@@ -1,6 +1,6 @@
 .message-list-group {
   display: flex;
-  color: green;
+  color: #315f72;
   display: inline-block;
   width: 90%;
   max-width: 91%;
@@ -17,6 +17,48 @@
 .message-respond-text-box {
   width: 350px;
   display: flex;
-  border: solid 1px green;
+  border: solid 1px #efb5a3;
   border-radius: 5px;
+}
+
+.conversation-list-group {
+  width: 40vw;
+  background-color: #f57e7e;
+  border: none;
+  border-radius: 20px;
+  margin-bottom: 15px;
+}
+
+.conversation-button-group {
+  padding: 5px;
+  background-color: #efb5a3;
+  border: none;
+  width: 35vw;
+  border-radius: 50px;
+  margin: 5px;
+}
+
+.conversation-button-content {
+  color: white;
+  background-color: #efb5a3;
+  border-radius: 50px;
+}
+
+.conversation-button-content:hover {
+  color: white;
+  background-color: #efb5a3;
+  border-radius: 50px;
+}
+
+#conversation-with-username {
+  font-weight: bold;
+  text-align: center;
+  color: #315f72;
+  font-size: 30px;
+}
+
+.messaging-page-div {
+  justify-content: center;
+  text-align: center;
+  display: flex;
 }

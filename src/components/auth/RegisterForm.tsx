@@ -65,8 +65,11 @@ export class RegisterForm extends React.Component<RegisterProps, RegisterState> 
       })
         .then((response) => response.json())
         .then((data) => {
-          this.props.updateToken(data.sessionToken); //may be token
+          localStorage.setItem("userId", data.user.id)
+          localStorage.setItem("username", data.user.username)
+          this.props.updateToken(data.sessionToken); 
           console.log(data);
+          console.log(data.sessionToken);
           if(this.props.origin === "gallery" && this.props.metaToggle !== undefined) {
             this.props.metaToggle()
           }

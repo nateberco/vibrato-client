@@ -11,7 +11,7 @@ const MessageRespond = (props: any) => {
     const handleSubmit = (conversation: any) => {
 
         conversation.preventDefault();
-        fetch(`http://localhost:3000/message/send/${conversation.recipientId}` , {
+        fetch(`http://localhost:3000/message/send/${props.replyTo}` , {
             method: 'POST',
             body: JSON.stringify({
                     content: content, 
@@ -25,6 +25,7 @@ const MessageRespond = (props: any) => {
         .then( (messageData) => {
             console.log('Message -->', messageData);
             setContent('');
+            props.viewMessage();
         })
         .catch((err => { console.log(err);}))
 

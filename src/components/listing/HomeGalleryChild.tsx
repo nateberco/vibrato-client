@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import React from 'react';
 import { withRouter } from "react-router-dom";
-import { Card, Button, CardImg, CardTitle, CardText, CardSubtitle, CardBody, Row, Col,  Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
+import { Card, Button, CardImg, CardTitle, CardText, CardBody, Modal, ModalHeader, ModalBody, ModalFooter, CardDeck, Row } from 'reactstrap';
 import MessageCreate from '../messaging/MessageCreate';
 import Auth from  '../auth/Auth';
 
@@ -37,16 +37,15 @@ const HomeGalleryChild = (props: any) => {
 
     return ( 
      
-      <div className="Cards">
-      <Card className="CardCss" 
-         style={{textAlign: "center" , width: '350px', height: "450px", padding: "0px", marginBottom: 20, boxShadow: " lightGrey 2px 2px"}}
-        >
-        <CardImg src={props.listingItem.photoURL} alt="Card image" height="350" 
+      <div>
+      <CardDeck>
+      <Card className="CardCss">
+        <CardBody className="CardBody" >
+          <CardTitle className="child-card-title">{props.listingItem.title}</CardTitle>
+        <CardImg className="child-card-image" src={props.listingItem.photoURL} alt="Card image" 
         onError = {errorHandling} 
         />
-        <CardBody className="CardBody" style = {{background: "white"}} >
-          <CardTitle tag="h5" style={{fontSize: 17}}>{props.listingItem.title}</CardTitle>
-          <Button style={{background: "#4A5759"}} onMouseOver={changeBtn} onMouseLeave={resetBtn} onClick={toggle}>{buttonLabel}See Full Description</Button> 
+          <Button style={{background: "#f57e7e"}} onMouseOver={changeBtn} onMouseLeave={resetBtn} onClick={toggle}>{buttonLabel}See Full Description</Button> 
         </CardBody>
       </Card>
       <Modal isOpen={modal} toggle={toggle} className={className}>
@@ -99,8 +98,7 @@ const HomeGalleryChild = (props: any) => {
         </ModalFooter>
       </Modal>
 
-     
-
+      </CardDeck>
     </div>
 
     );

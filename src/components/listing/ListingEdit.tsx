@@ -107,7 +107,7 @@ const ListingEdit = (props:any) => {
                     <Label htmlFor="photoURL">Upload Image</Label> 
                     <Input type="file" onChange={uploadImage} />
                     <br/>
-                    {loading ? <h6>Loading...</h6> : <img src={editPhotoURL} style={{width:   '150px', height:   '150px'  }} alt="cloudinary"/>} {' '}
+                    {loading ? <h6>Loading...</h6> : <img src={editPhotoURL} style={{width:   '150px', height:   '150px'  }} />} {' '}
                     <Button size= 'sm' color='outline-danger' disabled={loading} onClick={deleteImg}>Delete Image</Button>
                 </FormGroup>  
                     {/* END CLOUDINARY          */}   

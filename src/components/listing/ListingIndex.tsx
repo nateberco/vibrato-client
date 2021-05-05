@@ -56,8 +56,6 @@ const ListingIndex = (props: any) => {
 
     return ( 
         <>
-<h6 className='font-italic' style={{color: "#91a597"}}>{localStorage.getItem("user.username")}'s Listings</h6>
-
         <Container>
             <Row>
                 <Col md="3">

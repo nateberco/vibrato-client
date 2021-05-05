@@ -10,7 +10,9 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  Button
+  Modal,
+  ModalHeader,
+  ModalBody
 } from 'reactstrap';
 
 import { Link, NavLink } from "react-router-dom";
@@ -19,12 +21,20 @@ import { useHistory } from "react-router-dom";
 import './Home.css'
 import Auth from '../auth/Auth';
 
+
+
 const Sitebar = (props: any) => {
+  const {
+    className
+  } = props;
 
   const [showLogOut, setShowLogOut] = useState(false);
-
   const [isOpen, setIsOpen] = useState(false);
   const [sessionToken, setSessionToken] = useState("");
+
+  const [authModal, setAuthModal] = useState(false);
+
+  const authToggle = () => setAuthModal(!authModal)
 
   let history = useHistory();
 
@@ -103,11 +113,32 @@ const Sitebar = (props: any) => {
           <NavbarBrand style={{color: "#f57e7e", fontSize: "20px"}} href="/"onMouseOver={changeLink} 
               onMouseLeave={resetLink} size="sm" onClick={clearToken}>Log Out</NavbarBrand>
               
-          {/* { props.token ? <NavbarBrand style={{color: "#f57e7e", fontSize: "20px"}} href="/"onMouseOver={changeLink} 
-              onMouseLeave={resetLink} size="sm" onClick={clearToken}>Log Out</NavbarBrand> : null} */}
-           
+          {/* { !sessionToken ? <NavbarBrand style={{color: "#f57e7e", fontSize: "20px"}} onMouseOver={changeLink} 
+              onMouseLeave={resetLink} size="sm" onClick={authToggle}>Log In</NavbarBrand> :
+
+              <NavbarBrand style={{color: "#f57e7e", fontSize: "20px"}} href="/"onMouseOver={changeLink} 
+              onMouseLeave={resetLink} size="sm" onClick={clearToken}>Log Out</NavbarBrand> 
+              } */}
+
         </Collapse>
       </Navbar>
+
+      {/* START META AUTH MODAL */}
+<Modal isOpen={authModal} toggle={authToggle} className={className}>
+        <ModalHeader style={{backgroundColor: "#f7e1d7" , textAlign: "center", height: 90, borderRadius: 10}} toggle={authToggle}>
+          Auth
+        </ModalHeader>
+        <ModalBody style={{textAlign: "center"}}>
+
+          <Auth 
+              updateToken={props.updateToken} 
+              updateUsername={props.updateUsername}
+              metaToggle={authToggle}
+          />
+        </ModalBody> 
+      </Modal>
+      {/* END META AUTH MODAL */}
+
     </div>
   );
 }
