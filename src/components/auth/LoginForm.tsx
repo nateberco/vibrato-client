@@ -2,6 +2,7 @@
 
 import React from "react";
 import "../../App.css";
+import APIURL from '../../helpers/environment';
 
 interface LoginProps {
   updateToken: Function;
@@ -55,7 +56,7 @@ export class LoginForm extends React.Component<LoginProps, LoginState> {
       (val) => val.length > 0 && (validity = false)
     );
     if (validity === true) {
-      fetch("http://localhost:3000/user/login", {
+      fetch(`${APIURL}/user/login`, {
         method: "POST",
         body: JSON.stringify({
           username: this.state.username,

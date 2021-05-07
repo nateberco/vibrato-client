@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {Button, Container, Row, Col, Modal, ModalHeader, ModalFooter, ModalBody, ListGroup, ListGroupItem} from 'reactstrap';
 import MessageRespond from './MessageRespond';
 import "./Message.css";
+import APIURL from '../../helpers/environment';
 
 const MessageIndex = (props: any) => {
 
@@ -12,7 +13,7 @@ const MessageIndex = (props: any) => {
     const [userId, setUserId] = useState(localStorage.getItem("userId")? Number(localStorage.getItem("userId")): 0);
 
     const getConversations = () => {
-        fetch('http://localhost:3000/message/viewConversationList', {
+        fetch(`${APIURL}/message/viewConversationList`, {
             method: 'GET',
             headers:new Headers ({
                 'Content-Type': 'application/json',
@@ -33,7 +34,7 @@ const MessageIndex = (props: any) => {
 
     function viewMessage (id: number, replyToId: number) {
             
-            fetch(`http://localhost:3000/message/viewMessages/${id}`, {
+            fetch(`${APIURL}/message/viewMessages/${id}`, {
                 method: 'GET',
                 headers:new Headers ({
                     'Content-Type': 'application/json',

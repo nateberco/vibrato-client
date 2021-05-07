@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {Button, Form, FormGroup, Label, Input} from 'reactstrap';
-
+import APIURL from '../../helpers/environment';
 
 
 const MessageCreate = (props: any) => {
@@ -11,7 +11,7 @@ const MessageCreate = (props: any) => {
     const handleSubmit = (e: any) => {
 
         e.preventDefault();
-        fetch(`http://localhost:3000/message/send/${props.ownerId}` , {
+        fetch(`${APIURL}/message/send/${props.ownerId}` , {
             method: 'POST',
             body: JSON.stringify({
                     content: content, 

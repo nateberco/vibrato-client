@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {Button, Form, FormGroup, Label, Input} from 'reactstrap';
 import './Message.css'; 
-
+import APIURL from '../../helpers/environment';
 
 const MessageRespond = (props: any) => {
 
@@ -11,7 +11,7 @@ const MessageRespond = (props: any) => {
     const handleSubmit = (conversation: any) => {
 
         conversation.preventDefault();
-        fetch(`http://localhost:3000/message/send/${props.replyTo}` , {
+        fetch(`${APIURL}/message/send/${props.replyTo}` , {
             method: 'POST',
             body: JSON.stringify({
                     content: content, 

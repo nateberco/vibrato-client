@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import {Button, Form, FormGroup, Label, Input, Container} from 'reactstrap';
 import './Listing.css';
+import APIURL from '../../helpers/environment';
 
 const ListingPublish = (props: any) => {
 
@@ -42,7 +43,7 @@ const ListingPublish = (props: any) => {
     const handleSubmit = (e: React.SyntheticEvent) => {
 
         e.preventDefault();
-        fetch(`http://localhost:3000/listing/publish` , {
+        fetch(`${APIURL}/listing/publish` , {
             method: 'POST',
             body: JSON.stringify({
                 

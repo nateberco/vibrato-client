@@ -1,10 +1,11 @@
 import { Table, Button} from "reactstrap";
 import MyPageCards from "./MyListingCards";
+import APIURL from '../../helpers/environment';
 
 
 const MyListingsView = (props: any) => {
   const deleteListing = (listing: { id: any; }) => {
-    fetch(`http://localhost:3000/listing/delete/${listing.id}`, {
+    fetch(`${APIURL}/listing/delete/${listing.id}`, {
       method: "DELETE",
       headers: new Headers({
         "Content-Type": "application/json",

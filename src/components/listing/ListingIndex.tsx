@@ -4,6 +4,7 @@ import ListingPublish from './ListingPublish';
 import MyListingsView from './MyListingsView';
 import ListingEdit from './ListingEdit';
 import './Listing.css';
+import APIURL from '../../helpers/environment';
 
 
 
@@ -14,7 +15,7 @@ const ListingIndex = (props: any) => {
     const [listingToUpdate, setListingToUpdate] = useState({});
 
     const getListings = () => {
-        fetch('http://localhost:3000/listing/viewShop', {
+        fetch(`${APIURL}/listing/viewShop`, {
             method: 'GET',
             headers:new Headers ({
                 'Content-Type': 'application/json',

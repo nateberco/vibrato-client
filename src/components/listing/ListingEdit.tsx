@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import {Button, Form, FormGroup, Label, Input, Modal, ModalHeader, ModalBody, ModalFooter, FormText} from 'reactstrap';
-
+import APIURL from '../../helpers/environment';
 
 
 const ListingEdit = (props:any) => {
@@ -60,7 +60,7 @@ const ListingEdit = (props:any) => {
     const listingUpdate = (event: any) => {
         event.preventDefault();
 
-        fetch(`http://localhost:3000/listing/edit/${props.listingToUpdate.id}`, {
+        fetch(`${APIURL}/listing/edit/${props.listingToUpdate.id}`, {
             method:'PUT',
             body: JSON.stringify({
                     title: editTitle, 
