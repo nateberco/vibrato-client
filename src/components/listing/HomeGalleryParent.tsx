@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import HomeGalleryChild from './HomeGalleryChild';
-import {CardDeck} from 'reactstrap';
+import {CardDeck, Container, Col, Row} from 'reactstrap';
 
 
 
@@ -31,18 +31,18 @@ const HomeGalleryParent = (props:any) => {
     
 
     function displayCards(){
-        return listings.length > 0 ? listings.map(listings => <HomeGalleryChild token={props.token} listingItem = {listings} />) : null;
+        return listings.length > 0 ? listings.map(listings => <HomeGalleryChild updateToken={props.updateToken} token={props.token} listingItem = {listings} />) : null;
     }
 
 
     return (     
-        <>    
-            
-        <CardDeck className="cardDeckCss" style={{justifyContent: 'center', width: "auto" , marginBottom: 20}}>
-            {displayCards()}
-        </CardDeck>
-      
-       </>
+        <div className="gallery-div">    
+
+                <CardDeck className="cardDeckCss" style={{justifyContent: 'center', width: "auto" , marginBottom: 20,}}>
+                    {displayCards()}
+                </CardDeck>
+                
+       </div>
 
     )
 };

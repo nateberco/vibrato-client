@@ -84,7 +84,7 @@ const ListingPublish = (props: any) => {
         <div className="listingWrapper">
             <Container className="listingForm-wrapper">
             <h4 className="listingHeader">New Listing?</h4>
-            <Form onSubmit={handleSubmit} >
+            <Form onSubmit={handleSubmit}>
                 <FormGroup className="title">
                     <Label htmlFor="title">Title</Label>
                     <Input name="title" value={title} onChange={(e) => setTitle(e.target.value)}/>
@@ -129,21 +129,10 @@ const ListingPublish = (props: any) => {
                     <br/>
                     <Button size= 'sm' color='outline-danger' disabled={loading || photoURL===''} onClick={deleteImg} >Delete image</Button>
                 </FormGroup>  
-                    {/* END CLOUDINARY */}
-                    
 
-                {/* <FormGroup check>
-                    <Label htmlFor='publish' check>
-                    <Input type="checkbox" value={publish} onChange={(e) => setPublish(e.target.value)} />{' '}
-                    Publish?
-                    </Label>
-                </FormGroup> */}
                 <br />
                 <div className='submit'>
                 <Button className="listingButton"   
-                    // disabled={loading} 
-                    // onMouseOver={changeBtn} 
-                    // onMouseLeave={resetBtn} 
                     type="submit">List it!</Button>
                 </div>
             </Form>
@@ -153,4 +142,19 @@ const ListingPublish = (props: any) => {
 }
 
 export default ListingPublish;
+
+// INTERFACES
+
+export interface ListingPublishProps {
+    id: number;
+    title: string;
+    description: string;
+    photoURL: string;
+    category: string;
+    keywords: string;
+    userId: number;
+    updatedAt: Date;
+    createdAt: Date;
+}
+
 

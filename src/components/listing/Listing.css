@@ -1,11 +1,15 @@
 .listingWrapper {
   height: 97vh;
-  width: 100%;
-  display: flex;
+  width: 30vw;
+  display: flexbox;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: rgb(255, 240, 247);
+  border-radius: 20px;
+  border: 2px solid #315f72;
+  height: 100em;
+  margin-top: 15px;
 }
 
 .listingForm-wrapper {
@@ -16,9 +20,6 @@
   min-width: 100px;
   min-height: 400px;
   padding: 20px 40px;
-  border-radius: 6px;
-  box-shadow: 0px 8px 36px rgb(8, 63, 22);
-  background-color: #fefefe;
 }
 
 .listingHeader {
@@ -26,6 +27,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: #315f72;
 }
 
 .title,
@@ -36,6 +38,7 @@
   flex-direction: column;
   margin-bottom: 15px;
   width: 100%;
+  color: #f57e7e !important;
 }
 
 .descriptionInput {
@@ -59,7 +62,7 @@
 }
 
 .listingButton:hover {
-  background-color: rgb(30, 109, 50);
+  background-color: rgb(15, 56, 40);
   color: #fefefe;
 }
 
@@ -72,4 +75,139 @@
 .radioOptions {
   margin-left: 20px;
   margin-top: 10px;
+}
+
+#container-MyListingsCards {
+  display: flex;
+}
+
+.child-card-image {
+  position: relative;
+  max-height: 35vh;
+  min-height: 28vh;
+  margin-top: 15px;
+  justify-content: center;
+  border: 2px solid #315f72;
+}
+
+.CardBody {
+  background-color: white;
+  justify-content: center;
+}
+
+.cardDeckCss {
+  position: relative;
+  /* background-color: rgb(221, 247, 224); */
+  z-index: 0;
+  margin-top: px;
+  padding: 12px;
+  border-top-left-radius: 30px;
+}
+
+.CardCss {
+  text-align: center;
+  width: 300px;
+  height: 400px;
+  padding: 6px;
+  border: 1px solid #315f72 !important;
+  max-width: 250px;
+  border-radius: 30px !important;
+}
+
+.child-card-title {
+  color: #315f72;
+  /* font-size: 20px; */
+  font-size: 2vh;
+  border: 2px solid #f57e7e;
+  background-color: #eed0c7;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  max-height: 60px;
+  flex-wrap: wrap;
+}
+
+.gallery-description-button {
+  border: 1px solid #f57e7e !important;
+  background-color: #eed0c7 !important;
+  border-bottom-left-radius: 20px !important;
+  border-bottom-right-radius: 20px !important;
+  position: absolute;
+  bottom: 35px;
+  right: 45px;
+  justify-content: center;
+  align-content: center;
+  color: #f57e7e !important;
+}
+
+.gallery-div {
+  background-color: rgb(190, 216, 193);
+  border-top: 75px solid #315f72;
+  border-right: 15px solid #315f72;
+  border-left: 15px solid #315f72;
+  border-bottom: 15px solid #315f72;
+  z-index: 10;
+}
+
+.usernameListings {
+  background-color: rgb(190, 216, 193);
+  color: #315f72;
+  display: flex;
+  justify-content: center;
+  height: 10vh;
+  margin-right: 15vw;
+  margin-left: 15vw;
+  margin-top: 10px;
+  margin-bottom: 30px;
+  padding: 10px;
+  border-radius: 30px;
+}
+
+/* MyListingPageCards */
+
+#container-MyPageCards {
+  background-color: rgb(255, 253, 231);
+  text-align: center;
+  width: 300px;
+  height: 400px;
+  padding: 6px;
+  border: 2px solid #315f72 !important;
+  max-width: 500px;
+  border-radius: 30px !important;
+  overflow: scroll;
+  text-overflow: ellipsis;
+}
+
+#myTitle {
+  color: #315f72;
+  font-weight: bold;
+}
+
+#description2 {
+  color: #f57e7e;
+  border: 1px solid #eed0c7;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+#category2 {
+  color: #315f72;
+}
+
+.edit-delete-btns {
+  display: flex;
+  padding: 10px;
+  justify-content: right;
+  align-content: right;
+  position: relative;
+  margin-left: 18em;
+}
+
+.edit-button1 {
+  background-color: #315f72 !important;
+  margin-right: 10px;
+}
+
+.delete-button1 {
+  background-color: red !important;
+  color: white;
 }

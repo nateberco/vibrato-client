@@ -31,6 +31,7 @@ const Routes = (props: any) => {
 
 
     const updateToken = (newToken: any) => {
+        debugger
         localStorage.setItem("token", newToken);
         setSessionToken(newToken);
         console.log(sessionToken);
@@ -74,7 +75,7 @@ const Routes = (props: any) => {
         
         <Switch>
             <Route exact path="/">
-                <HomeGalleryParent token={sessionToken}/>
+                <HomeGalleryParent updateToken={updateToken} token={sessionToken}/>
             </Route>
 
             <Route exact path="/myListings">

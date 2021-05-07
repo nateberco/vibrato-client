@@ -1,17 +1,17 @@
 import React, { useState, useEffect } from 'react';
 import {Button, Form, FormGroup, Label, Input} from 'reactstrap';
+import './Message.css'; 
 
 
-
-const MessageCreate = (props: any) => {
+const MessageRespond = (props: any) => {
 
     const [content, setContent] = useState('');
 
     
-    const handleSubmit = (e: any) => {
+    const handleSubmit = (conversation: any) => {
 
-        e.preventDefault();
-        fetch(`http://localhost:3000/message/send/${props.ownerId}` , {
+        conversation.preventDefault();
+        fetch(`http://localhost:3000/message/send/${props.replyTo}` , {
             method: 'POST',
             body: JSON.stringify({
                     content: content, 
@@ -25,6 +25,7 @@ const MessageCreate = (props: any) => {
         .then( (messageData) => {
             console.log('Message -->', messageData);
             setContent('');
+            props.viewMessage();
         })
         .catch((err => { console.log(err);}))
 
@@ -35,13 +36,12 @@ const MessageCreate = (props: any) => {
             
             <Form onSubmit={handleSubmit}>
                 <FormGroup>
-                    <Label htmlFor="message">your message:</Label>
-                    <textarea name="message" value={content} onChange={(e) => setContent(e.target.value)}/>
+                    <textarea className="message-respond-text-box" name="message" value={content} onChange={(e) => setContent(e.target.value)}/>
                 </FormGroup>
-                <Button type="submit">Send Message</Button>
+                <Button className="message-button-respond" type="submit">Reply</Button>
             </Form>
         </>
      );
 }
 
-export default MessageCreate;
+export default MessageRespond;

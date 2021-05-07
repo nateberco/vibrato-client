@@ -10,19 +10,31 @@ import {
   DropdownToggle,
   DropdownMenu,
   DropdownItem,
-  Button
+  Modal,
+  ModalHeader,
+  ModalBody
 } from 'reactstrap';
 
 import { Link, NavLink } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
 import './Home.css'
+import Auth from '../auth/Auth';
+
+
 
 const Sitebar = (props: any) => {
+  const {
+    className
+  } = props;
 
   const [showLogOut, setShowLogOut] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [sessionToken, setSessionToken] = useState("");
+
+  const [authModal, setAuthModal] = useState(false);
+
+  const authToggle = () => setAuthModal(!authModal)
 
   let history = useHistory();
 
@@ -65,7 +77,7 @@ const Sitebar = (props: any) => {
             <NavItem id="sitebarHome">
               <NavLink id="sitebarHome"onMouseOver={changeLink} onMouseLeave={resetLink}
                 to="/"
-                >Home</NavLink>
+                >Browse</NavLink>
             </NavItem>
            
             
@@ -98,107 +110,38 @@ const Sitebar = (props: any) => {
               >Messages</NavLink>
             </NavItem>
           </Nav>
-          <NavbarBrand style={{color: "#f57e7e", fontSize: "20px"}} href="/"onMouseOver={changeLink} 
-              onMouseLeave={resetLink} size="sm" onClick={clearToken} >Log Out</NavbarBrand>
-          {/* <NavLink to="/">
-          <Button onMouseOver={changeLink} 
-              onMouseLeave={resetLink} size="sm" onClick={clearToken} >Log out</Button>
-          </NavLink> */}
-           
+          {/* <NavbarBrand style={{color: "#f57e7e", fontSize: "20px"}} href="/"onMouseOver={changeLink} 
+              onMouseLeave={resetLink} size="sm" onClick={clearToken}>Log Out</NavbarBrand> */}
+              
+          { !sessionToken ? 
+              <NavbarBrand style={{color: "#f57e7e", fontSize: "20px"}} href="/"onMouseOver={changeLink} 
+              onMouseLeave={resetLink} size="sm" onClick={clearToken}>Log Out</NavbarBrand> : null
+              }
+
+              {/* <NavbarBrand style={{color: "#f57e7e", fontSize: "20px"}} onMouseOver={changeLink} 
+              onMouseLeave={resetLink} size="sm" onClick={authToggle}>Log In</NavbarBrand> : */}
+
         </Collapse>
       </Navbar>
+
+      {/* START META AUTH MODAL */}
+<Modal isOpen={authModal} toggle={authToggle} className={className}>
+        <ModalHeader style={{backgroundColor: "#f7e1d7" , textAlign: "center", height: 90, borderRadius: 10}} toggle={authToggle}>
+          Auth
+        </ModalHeader>
+        <ModalBody style={{textAlign: "center"}}>
+
+          <Auth 
+              updateToken={props.updateToken} 
+              updateUsername={props.updateUsername}
+              metaToggle={authToggle}
+          />
+        </ModalBody> 
+      </Modal>
+      {/* END META AUTH MODAL */}
+
     </div>
   );
 }
 
 export default Sitebar;
-
-
-
-// import React, { useState, useEffect } from "react";
-// import {
-//   Collapse,
-//   Navbar,
-//   NavbarToggler,
-//   NavbarBrand,
-//   Nav,
-//   NavItem,
-//   NavLink,
-//   Button,
-//   NavbarText
-
-// } from 'reactstrap';
-
-// import { Link } from "react-router-dom";
-// import './Home.css'
-
-
-// const Sitebar = (props: any) => {
-
-//   const [showLogOut, setShowLogOut] = useState(false);
-//   const [isOpen, setIsOpen] = useState(false);
-
-//   const toggle = () => {
-//     let newIsOpen = !isOpen;
-//     setIsOpen(newIsOpen);
-//   };
-
-
-//   // Hover effect on buttons
-//   function changeLink(e: any) {
-//     // e.target.style.fontWeight = 'bold';
-//     e.target.style.color = '#f7e1d7';
-//   }
-
-//   function resetLink(e: any) {
-//     // e.target.style.fontWeight = 'normal';
-//     e.target.style.color = 'black';
-//   }
-
-//   useEffect(() => {
-//     if (localStorage.getItem("sessionToken")) {
-//         setShowLogOut(true);
-//     }
-//   }, [showLogOut]);
-
-
-//   return (
-    
-//       <Navbar 
-//       className="navbarCss" 
-//       dark expand="md"
-//       >
-//         <NavbarToggler onClick={toggle} />
-//         <Collapse isOpen={isOpen} navbar>
-//           <Nav 
-//           className="ml-auto mr-auto" navbar
-//           >
-//             <NavItem>
-//               <Link
-//                 onMouseOver={changeLink} onMouseLeave={resetLink}
-//                 style={{ color: "black" }}
-//                 //className="text-decoration-none pl-5"
-//                 to="/"
-//               >
-//                 Home
-//               </Link>
-//               <Link
-//                 onMouseOver={changeLink} onMouseLeave={resetLink}
-//                 style={{ color: "black" }}
-//                 //className="text-decoration-none pl-5"
-//                 to="/myListings"
-//               >
-//                 My Listings
-//               </Link>         
-//             </NavItem>
-//           </Nav>
-//         </Collapse>
-//       </Navbar>
-      
-      
-    
-//   );
-// };
-
-
-// export default Sitebar;
