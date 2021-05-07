@@ -36,13 +36,13 @@ const HomeGalleryParent = (props:any) => {
 
 
     return (     
-        <>    
-        
+        <div className="gallery-div">    
+
                 <CardDeck className="cardDeckCss" style={{justifyContent: 'center', width: "auto" , marginBottom: 20,}}>
                     {displayCards()}
                 </CardDeck>
                 
-       </>
+       </div>
 
     )
 };

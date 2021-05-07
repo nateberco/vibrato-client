@@ -3,6 +3,7 @@ import {Button, Container, Row, Col, CardDeck} from 'reactstrap';
 import ListingPublish from './ListingPublish';
 import MyListingsView from './MyListingsView';
 import ListingEdit from './ListingEdit';
+import './Listing.css';
 
 
 
@@ -56,21 +57,21 @@ const ListingIndex = (props: any) => {
 
     return ( 
         <>
+        <h1 className="usernameListings">{localStorage.getItem("username")}'s Listings</h1>
         <Container>
             <Row>
-                <Col md="3">
+                <Col md="8">
             
-                    <ListingPublish getListings={getListings} token={props.token} username={props.username}/>
-                   
-                </Col>
-                <Col md="9" className='text-center'>
-                    <MyListingsView getListings={getListings} listings={listings} 
+                <MyListingsView getListings={getListings} listings={listings} 
                     editUpdateListing={editUpdateListing} updateOn={updateOn} token={props.token}
                     />
                 </Col>
-                <Col>
-                {updateActive ? <ListingEdit listingToUpdate={listingToUpdate} updateOff={updateOff} token={props.token} getListings={getListings}/> : <></>}
+                <Col md="3" className='text-center'>
+                <ListingPublish getListings={getListings} token={props.token} username={props.username}/>  
+
+                    {updateActive ? <ListingEdit listingToUpdate={listingToUpdate} updateOff={updateOff} token={props.token} getListings={getListings}/> : <></>}
                 </Col>
+
             </Row>
             <br/>
         </Container>

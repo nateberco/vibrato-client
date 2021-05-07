@@ -33,10 +33,9 @@ const MyListingsView = (props: any) => {
         <tr key={index} >
           <td > 
             <MyPageCards listingItem={listing} />
-            <div className="flexbox-container">
-                <div className="flexbox-item-1">
-                  <Button
-                    style={{ backgroundColor: "#b0c4b1", marginRight: 5, width: 50 }}
+            <div className="edit-delete-btns">
+                <div>
+                  <Button className="edit-button1"
                     onMouseOver={changeBtn} onMouseLeave={resetBtn}
                     onClick={() => {
                       props.editUpdateListing(listing);
@@ -46,9 +45,8 @@ const MyListingsView = (props: any) => {
                     Edit
                   </Button>{" "}
                 </div>
-                <div className="flexbox-item-2">
-                  <Button
-                    style={{ backgroundColor: "#4a5759", marginLeft: 5, width: 75}}
+                <div>
+                  <Button className="delete-button1"
                     onMouseOver={changeBtn} onMouseLeave={resetBtn}
                     onClick={() => {
                       deleteListing(listing);
@@ -67,14 +65,11 @@ const MyListingsView = (props: any) => {
 
   return (
     <>
-      <h1 style={{color: "#91a597"}}>{localStorage.getItem("username")}'s Listings</h1>
-      <br />
       <Table>
         <tbody>
           {props.listings.length === 0 ? (
             <h4>
-              You have no listings yet.. Use the bar on the left to list
-              some
+              You haven't listed anything yet... You can do so in the form on the right!
             </h4>
           ) : (
             listingsMapper()

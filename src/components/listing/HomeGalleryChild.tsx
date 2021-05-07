@@ -23,7 +23,7 @@ const HomeGalleryChild = (props: any) => {
 
 //   used in case no picture set in the card 
   function errorHandling(e: any){
-    e.target.src = 'https://askleo.askleomedia.com/wp-content/uploads/2004/06/no_image-300x245.jpg';
+    e.target.src = 'https://st.depositphotos.com/1987177/3470/v/600/depositphotos_34700099-stock-illustration-no-photo-available-or-missing.jpg';
   }
 
   function changeBtn(e: any) {
@@ -37,17 +37,18 @@ const HomeGalleryChild = (props: any) => {
 
     return ( 
      
-      <div>
-      <CardDeck>
+      <div >
+      <CardDeck className="cardDeckCss">
       <Card className="CardCss">
-        <CardBody className="CardBody" >
+        <CardBody className="CardBody">
           <CardTitle className="child-card-title">{props.listingItem.title}</CardTitle>
         <CardImg className="child-card-image" src={props.listingItem.photoURL} alt="Card image" 
         onError = {errorHandling} 
         />
-          <Button style={{background: "#f57e7e"}} onMouseOver={changeBtn} onMouseLeave={resetBtn} onClick={toggle}>{buttonLabel}See Full Description</Button> 
+          <Button className="gallery-description-button" style={{background: "#f57e7e"}} onMouseOver={changeBtn} onMouseLeave={resetBtn} onClick={toggle}>{buttonLabel}See Full Description</Button> 
         </CardBody>
       </Card>
+      <br/>
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader style={{backgroundColor: "#f7e1d7" , textAlign: "center", height: 90, borderRadius: 10}} toggle={toggle}>
           {props.listingItem.title}

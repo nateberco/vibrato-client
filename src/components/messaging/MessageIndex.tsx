@@ -7,7 +7,7 @@ const MessageIndex = (props: any) => {
 
     const [conversations, setConversations] = useState<Conversation>();
     const [messages, setMessages] = useState<ViewMessageResponse>();
-    const [replyTo, setReplyTo] = useState(0);
+    const [conversationReplyTo, setConversationReplyTo] = useState(0);
     const [currentMessageId, setCurrentMessageId] = useState(0);
     const [userId, setUserId] = useState(localStorage.getItem("userId")? Number(localStorage.getItem("userId")): 0);
 
@@ -31,9 +31,8 @@ const MessageIndex = (props: any) => {
         getConversations();
     }, [])
 
-    function viewMessage (id: number=currentMessageId, replyToId: number=replyTo) {
-            setReplyTo(replyToId)
-            setCurrentMessageId(id)
+    function viewMessage (id: number, replyToId: number) {
+            
             fetch(`http://localhost:3000/message/viewMessages/${id}`, {
                 method: 'GET',
                 headers:new Headers ({
@@ -49,6 +48,19 @@ const MessageIndex = (props: any) => {
             })
         }
 
+        // Use Effect for Refresh by time
+        useEffect(()=>{
+    
+            // viewMessage()
+            const interval = setInterval(()=>{
+              viewMessage(currentMessageId, conversationReplyTo)
+             }, 1000)
+               
+             return()=>clearInterval(interval)
+        },[currentMessageId])
+
+
+
         // MODAL FOR OPENING CONVOS
         const {
             classModal
@@ -63,7 +75,7 @@ const MessageIndex = (props: any) => {
 
 
 return ( 
-    <div>
+    <>
     <Container className="messaging-page-div">
         <Row>
             <Col>
@@ -72,17 +84,21 @@ return (
             {conversations!==undefined ? 
                 conversations.conversation.map((conversation, index) => {
                     return(
-                        <ListGroup className="conversation-list-group" onClick={ ()=> viewMessage(conversation.id, conversations.replyTo[index])}> 
+                        <ListGroup className="conversation-list-group" onClick={ ()=> {
+                            setConversationReplyTo(conversations.replyTo[index])
+                            setCurrentMessageId(conversation.id)
+                            viewMessage(conversation.id, conversations.replyTo[index])}}> 
                             <div>
                                 <Button className="conversation-button-group" onClick={toggle}>
                                     <div className="conversation-button-content">
                                         <div > 
                                             Conversation with: 
                                         </div>  
-                                        <div id="conversation-with-username"> {conversations.user.filter(user => user.id===conversations.replyTo[index])[0].username}
+                                        <div id="conversation-with-username"> {conversations.user !== undefined ? conversations.user.filter(user => user.id===conversations.replyTo[index])[0].username : null}
+                                        {/* conversations.user.filter(user => user.id===conversations.replyTo[index])[0].username */}
                                         </div>
                                      </div>
-                                </Button>
+                                </Button>{""}
                         <Modal isOpen={modal} toggle={toggle} className={classModal}>
                             <ModalHeader toggle={toggle}>Your messages with: {conversations.user.filter(user => user.id===conversations.replyTo[index])[0].username}</ModalHeader>
                             <ModalBody>
@@ -104,7 +120,7 @@ return (
                             <ModalFooter>
                             {/* <Button color="primary" onClick={toggle}>Do Something</Button>{' '} */}
                                 <div>
-                                    <MessageRespond replyTo={replyTo} className="message-respond-form" viewMessage={viewMessage} token={props.token}/>
+                                    <MessageRespond replyTo={conversationReplyTo} className="message-respond-form" viewMessage={viewMessage} token={props.token}/>
                                 </div>
                             </ModalFooter>
                         </Modal>
@@ -116,7 +132,7 @@ return (
             </Col>
         </Row>
     </Container>
-    </div>
+    </>
     );
     }
  

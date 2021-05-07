@@ -110,15 +110,16 @@ const Sitebar = (props: any) => {
               >Messages</NavLink>
             </NavItem>
           </Nav>
-          <NavbarBrand style={{color: "#f57e7e", fontSize: "20px"}} href="/"onMouseOver={changeLink} 
-              onMouseLeave={resetLink} size="sm" onClick={clearToken}>Log Out</NavbarBrand>
+          {/* <NavbarBrand style={{color: "#f57e7e", fontSize: "20px"}} href="/"onMouseOver={changeLink} 
+              onMouseLeave={resetLink} size="sm" onClick={clearToken}>Log Out</NavbarBrand> */}
               
-          {/* { !sessionToken ? <NavbarBrand style={{color: "#f57e7e", fontSize: "20px"}} onMouseOver={changeLink} 
-              onMouseLeave={resetLink} size="sm" onClick={authToggle}>Log In</NavbarBrand> :
-
+          { !sessionToken ? 
               <NavbarBrand style={{color: "#f57e7e", fontSize: "20px"}} href="/"onMouseOver={changeLink} 
-              onMouseLeave={resetLink} size="sm" onClick={clearToken}>Log Out</NavbarBrand> 
-              } */}
+              onMouseLeave={resetLink} size="sm" onClick={clearToken}>Log Out</NavbarBrand> : null
+              }
+
+              {/* <NavbarBrand style={{color: "#f57e7e", fontSize: "20px"}} onMouseOver={changeLink} 
+              onMouseLeave={resetLink} size="sm" onClick={authToggle}>Log In</NavbarBrand> : */}
 
         </Collapse>
       </Navbar>

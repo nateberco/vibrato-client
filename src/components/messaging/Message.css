@@ -22,39 +22,39 @@
 }
 
 .conversation-list-group {
-  width: 40vw;
-  background-color: #f57e7e;
-  border: none;
-  border-radius: 20px;
-  margin-bottom: 15px;
+  width: 40vw !important;
+  background-color: #f57e7e !important;
+  border: none !important;
+  border-radius: 20px !important;
+  margin-bottom: 15px !important;
 }
 
 .conversation-button-group {
-  padding: 5px;
-  background-color: #efb5a3;
-  border: none;
-  width: 35vw;
-  border-radius: 50px;
-  margin: 5px;
+  padding: 5px !important;
+  background-color: #efb5a3 !important;
+  border: none !important;
+  width: 35vw !important;
+  border-radius: 50px !important;
+  margin: 5px !important;
 }
 
 .conversation-button-content {
-  color: white;
-  background-color: #efb5a3;
-  border-radius: 50px;
+  color: white !important;
+  background-color: #efb5a3 !important;
+  border-radius: 50px !important;
 }
 
 .conversation-button-content:hover {
-  color: white;
-  background-color: #efb5a3;
-  border-radius: 50px;
+  color: white !important;
+  background-color: rgb(190, 216, 193) !important;
+  border-radius: 50px !important;
 }
 
 #conversation-with-username {
-  font-weight: bold;
-  text-align: center;
-  color: #315f72;
-  font-size: 30px;
+  font-weight: bold !important;
+  text-align: center !important;
+  color: #315f72 !important;
+  font-size: 30px !important;
 }
 
 .messaging-page-div {
