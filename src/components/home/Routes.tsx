@@ -31,7 +31,6 @@ const Routes = (props: any) => {
 
 
     const updateToken = (newToken: any) => {
-        debugger
         localStorage.setItem("token", newToken);
         setSessionToken(newToken);
         console.log(sessionToken);

@@ -24,7 +24,7 @@ const MessageIndex = (props: any) => {
         .then((Messages) => {
             setConversations(Messages);
             // set replyTo 
-            console.log('list of product from index -->', Messages);
+            console.log('list of Conversations -->', Messages);
         })
     }
 
@@ -45,7 +45,7 @@ const MessageIndex = (props: any) => {
             .then((Messages) => {
                 setMessages(Messages);
                 
-                console.log('list of messages from index -->', Messages);
+                console.log('list of messages -->', Messages);
             })
         }
 
@@ -71,7 +71,27 @@ const MessageIndex = (props: any) => {
 
           const toggle = () => 
           setModal(!modal);
-            
+
+   /* ********************** 
+   START Delete Conversation
+   *********************** */    
+  
+   const deleteConversation = (id: number) => {
+    fetch(`${APIURL}/message/delete/${id}`, {
+      method: "DELETE",
+      headers: new Headers({
+        "Content-Type": "application/json",
+        Authorization: props.token,
+      }),
+    }).then(() => {
+      getConversations();
+    });
+  };
+
+    /* ********************** 
+    END Delete Conversation
+    *********************** */    
+
 
 
 
@@ -89,17 +109,25 @@ return (
                             setConversationReplyTo(conversations.replyTo[index])
                             setCurrentMessageId(conversation.id)
                             viewMessage(conversation.id, conversations.replyTo[index])}}> 
-                            <div>
+                            <div className="conversations-map-div">
+                                
                                 <Button className="conversation-button-group" onClick={toggle}>
                                     <div className="conversation-button-content">
                                         <div > 
                                             Conversation with: 
-                                        </div>  
+                                        </div> 
+                                        
                                         <div id="conversation-with-username"> {conversations.user !== undefined ? conversations.user.filter(user => user.id===conversations.replyTo[index])[0].username : null}
-                                        {/* conversations.user.filter(user => user.id===conversations.replyTo[index])[0].username */}
                                         </div>
                                      </div>
                                 </Button>{""}
+                                {/* START DELETE BUTTON */}
+                                <Button className="conversation-delete-button" 
+                                // onClick={deleteConversation}
+                                onClick={() => deleteConversation(conversation.id)}>
+                                DELETE
+                                </Button>
+                                {/* END DELETE BUTTON */}
                         <Modal isOpen={modal} toggle={toggle} className={classModal}>
                             <ModalHeader toggle={toggle}>Your messages with: {conversations.user.filter(user => user.id===conversations.replyTo[index])[0].username}</ModalHeader>
                             <ModalBody>
@@ -119,11 +147,13 @@ return (
                                      </ListGroup>
                             </ModalBody>
                             <ModalFooter>
+                            
                             {/* <Button color="primary" onClick={toggle}>Do Something</Button>{' '} */}
                                 <div>
                                     <MessageRespond replyTo={conversationReplyTo} className="message-respond-form" viewMessage={viewMessage} token={props.token}/>
                                 </div>
                             </ModalFooter>
+                            
                         </Modal>
                         </div>        
                     </ListGroup>
@@ -180,6 +210,7 @@ export default MessageIndex;
         conversation: Conversation[];
         messages: Message[];
         replyTo: number[];
+        id: number; //?
     }
 
 
@@ -199,3 +230,7 @@ export interface ViewMessageResponse {
     messages: ViewMessage[];
     userId: number;
 }
+function id(id: any): void {
+    throw new Error('Function not implemented.');
+}
+
