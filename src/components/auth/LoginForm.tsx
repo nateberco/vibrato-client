@@ -70,6 +70,7 @@ export class LoginForm extends React.Component<LoginProps, LoginState> {
         .then((data) => {
           localStorage.setItem("userId", data.user.id)
           localStorage.setItem("username", data.user.username)
+          localStorage.setItem("role", data.user.role)
           this.props.updateToken(data.sessionToken); 
           console.log(data);
           if(this.props.origin === "gallery" && this.props.metaToggle !== undefined) {
