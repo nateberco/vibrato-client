@@ -3,6 +3,7 @@ import {Button, Form, FormGroup, Label, Input, Container} from 'reactstrap';
 import './Listing.css';
 import APIURL from '../../helpers/environment';
 
+
 const ListingPublish = (props: any) => {
 
     const [title, setTitle] = useState('');
@@ -67,8 +68,9 @@ const ListingPublish = (props: any) => {
             setPhotoURL('');
             setCategory('');
             setKeywords('');
-
+            props.getListings()
         })
+        
         .catch((err => { console.log(err);}))
     }
 

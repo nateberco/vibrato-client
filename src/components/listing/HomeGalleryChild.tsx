@@ -4,7 +4,8 @@ import { withRouter } from "react-router-dom";
 import { Card, Button, CardImg, CardTitle, CardText, CardBody, Modal, ModalHeader, ModalBody, ModalFooter, CardDeck, Row } from 'reactstrap';
 import MessageCreate from '../messaging/MessageCreate';
 import Auth from  '../auth/Auth';
-
+import APIURL from '../../helpers/environment';
+import userEvent from "@testing-library/user-event";
 
 const HomeGalleryChild = (props: any) => {
 
@@ -33,6 +34,23 @@ const HomeGalleryChild = (props: any) => {
   function resetBtn(e:any) {
     e.target.style.fontSize = 'initial';
   }
+
+  /* **** START Admin Delete **** */
+  const adminDeleteListing = (id: any) => {
+    fetch(`${APIURL}/listing/deleteAdmin/${id}`, {
+      method: "DELETE",
+      headers: new Headers({
+        "Content-Type": "application/json",
+        Authorization: props.token,
+      }),
+    }).then(() => {
+      console.log("Admin deleted listing succesffully")
+      props.fetchProducts();
+      
+    });
+  };
+
+    /* **** END Admin Delete **** */
 
 
     return ( 
@@ -85,9 +103,20 @@ const HomeGalleryChild = (props: any) => {
         </ModalBody>
         <ModalFooter style={{backgroundColor: "#f7e1d7", marginLeft: 0, marginRight: 0}}>
         {/* TERNARY TO OPEN MESSAGING OR LOG IN/REGISTER !!! */}
+          { localStorage.getItem('role') === "Admin" ? 
+
           <Button 
           style={{backgroundColor: "#4a5759", color: "white", width: 150, height: 40, textAlign: "center", marginLeft: "auto", marginRight: "auto"}} 
-          onMouseOver={changeBtn} onMouseLeave={resetBtn} onClick={toggle}>Close</Button>{' '}
+          onMouseOver={changeBtn} onMouseLeave={resetBtn} 
+          // onClick={adminDeleteListing}
+          onClick={() => {
+            adminDeleteListing(props.listingItem.id);
+          }}
+          >
+            Admin Delete
+          </Button>: null
+
+          }
           { props.token ? <Button onClick={() => setShowMessageBox(!showMessageBox)} >Message Seller</Button> : null}
           { !props.token ? <Button style={{background: "#4A5759"}} onMouseOver={changeBtn} onMouseLeave={resetBtn} onClick={metaToggle}>{buttonLabel}Sign in or Register HERE to Message Seller</Button> : null}
           
