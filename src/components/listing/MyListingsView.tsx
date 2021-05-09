@@ -69,8 +69,8 @@ const MyListingsView = (props: any) => {
       <Table>
         <tbody>
           {props.listings.length === 0 ? (
-            <h4>
-              You haven't listed anything yet... You can do so in the form on the right!
+            <h4 style={{ color: '#efb5a3', fontSize: "3em"}}>
+              You have no listings...
             </h4>
           ) : (
             listingsMapper()
