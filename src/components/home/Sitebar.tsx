@@ -81,7 +81,7 @@ const Sitebar = (props: any) => {
             </NavItem>
            
             
-            <UncontrolledDropdown id="sitebarHome" style={{marginLeft: "50px", marginTop: "2px"}} nav inNavbar>
+            {/* <UncontrolledDropdown id="sitebarHome" style={{marginLeft: "50px", marginTop: "2px"}} nav inNavbar>
               <DropdownToggle nav caret onMouseOver={changeLink} onMouseLeave={resetLink} 
               >
                 Listing Type
@@ -98,7 +98,7 @@ const Sitebar = (props: any) => {
                   Gear & Services
                 </DropdownItem>  
               </DropdownMenu>
-            </UncontrolledDropdown>
+            </UncontrolledDropdown> */}
             <NavItem id="sitebarHome">
               <NavLink id="sitebarHome" onMouseOver={changeLink} onMouseLeave={resetLink}
                 to="/myListings"

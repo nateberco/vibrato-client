@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import HomeGalleryChild from './HomeGalleryChild';
 import {CardDeck, Container, Col, Row} from 'reactstrap';
 import APIURL from '../../helpers/environment';
-
+import BrowseBar from '../home/BrowseBar';
 
 
 
@@ -36,7 +36,9 @@ const HomeGalleryParent = (props:any) => {
     }
 
 
-    return (     
+    return (    
+        <> 
+        <BrowseBar/>
         <div className="gallery-div">    
 
                 <CardDeck className="cardDeckCss" style={{justifyContent: 'center', width: "auto" , marginBottom: 20,}}>
@@ -44,7 +46,7 @@ const HomeGalleryParent = (props:any) => {
                 </CardDeck>
                 
        </div>
-
+        </>
     )
 };
 

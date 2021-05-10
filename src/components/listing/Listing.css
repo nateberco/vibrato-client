@@ -142,9 +142,13 @@
   font-size: small !important;
 }
 
+.gallery-description-button:hover {
+  transform: scale(1.1);
+}
+
 .gallery-div {
   background-color: rgb(190, 216, 193);
-  border-top: 75px solid #315f72;
+  border-top: 40px solid #315f72;
   border-right: 15px solid #315f72;
   border-left: 15px solid #315f72;
   border-bottom: 15px solid #315f72;
