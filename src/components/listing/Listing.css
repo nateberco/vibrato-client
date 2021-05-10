@@ -218,3 +218,20 @@
   background-color: red !important;
   color: white;
 }
+
+/* MODAL */
+
+.gallery-modal {
+  color: #315f72 !important;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+.gallery-modal-header {
+  color: #315f72 !important;
+}
+
+.gallery-div-modal {
+  position: absolute;
+}

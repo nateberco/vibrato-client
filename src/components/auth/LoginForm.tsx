@@ -95,6 +95,7 @@ export class LoginForm extends React.Component<LoginProps, LoginState> {
                 type="text"
                 name="username"
                 onChange={this.handleChange}
+                className="auth-input-text"
               />
             </div>
             <div className="password">
@@ -103,6 +104,7 @@ export class LoginForm extends React.Component<LoginProps, LoginState> {
                 type="password"
                 name="password"
                 onChange={this.handleChange}
+                className="auth-input-text"
               />
               {/* {errors.password.length > 0 && (
                 <span style={{ color: "red" }}>{errors.password}</span>

@@ -69,36 +69,16 @@ const Sitebar = (props: any) => {
 
   return (
     <div>
-      <Navbar light expand="md">
-        <NavbarBrand style={{color: "#f57e7e", fontSize: "40px"}} href="/">Vibrato</NavbarBrand>
+      <Navbar className="sitebar" light expand="md">
+        
         <NavbarToggler onClick={toggle} />
-        <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
+        <Collapse id="nav-row" isOpen={isOpen} navbar>
+          <Nav  id="sitebar" className="mr-auto" navbar>
             <NavItem id="sitebarHome">
               <NavLink id="sitebarHome"onMouseOver={changeLink} onMouseLeave={resetLink}
                 to="/"
                 >Browse</NavLink>
             </NavItem>
-           
-            
-            {/* <UncontrolledDropdown id="sitebarHome" style={{marginLeft: "50px", marginTop: "2px"}} nav inNavbar>
-              <DropdownToggle nav caret onMouseOver={changeLink} onMouseLeave={resetLink} 
-              >
-                Listing Type
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>
-                  Gear
-                </DropdownItem>
-                <DropdownItem>
-                  Services
-                </DropdownItem>
-                <DropdownItem divider />   
-                <DropdownItem>
-                  Gear & Services
-                </DropdownItem>  
-              </DropdownMenu>
-            </UncontrolledDropdown> */}
             <NavItem id="sitebarHome">
               <NavLink id="sitebarHome" onMouseOver={changeLink} onMouseLeave={resetLink}
                 to="/myListings"
@@ -109,18 +89,17 @@ const Sitebar = (props: any) => {
                 to="/messages"
               >Messages</NavLink>
             </NavItem>
+            <NavbarBrand id="brand" href="/">Vibrato</NavbarBrand>
+            <NavbarBrand style={{color: "#f57e7e", fontSize: "20px"}} href="/"onMouseOver={changeLink} 
+              onMouseLeave={resetLink} size="sm" onClick={clearToken}>Log Out</NavbarBrand>
           </Nav>
-          {/* <NavbarBrand style={{color: "#f57e7e", fontSize: "20px"}} href="/"onMouseOver={changeLink} 
-              onMouseLeave={resetLink} size="sm" onClick={clearToken}>Log Out</NavbarBrand> */}
+          
               
-          { !sessionToken ? 
+          {/* { !sessionToken ? 
               <NavbarBrand style={{color: "#f57e7e", fontSize: "20px"}} href="/"onMouseOver={changeLink} 
               onMouseLeave={resetLink} size="sm" onClick={clearToken}>Log Out</NavbarBrand> : null
-              }
-
-              {/* <NavbarBrand style={{color: "#f57e7e", fontSize: "20px"}} onMouseOver={changeLink} 
-              onMouseLeave={resetLink} size="sm" onClick={authToggle}>Log In</NavbarBrand> : */}
-
+              } */}
+  
         </Collapse>
       </Navbar>
 

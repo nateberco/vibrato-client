@@ -7,7 +7,6 @@ div {
   height: 90vh;
   width: 100%;
   display: flex;
-
   justify-content: center;
   align-items: center;
   background-color: rgb(255, 240, 247);
@@ -19,19 +18,17 @@ div {
   min-height: 400px;
   padding: 20px 40px;
   border-radius: 20px;
-  box-shadow: 0px 8px 36px rgb(8, 63, 22);
+  box-shadow: 0px 8px 36px #315f72;
   background-color: #fefefe;
 }
 
 .authForm-wrapper > h2 {
   display: flex;
   justify-content: center;
-  font-family: "Segoe UI", "Ubuntu", "Roboto", "Open Sans", "Helvetica Neue",
-    sans-serif;
   font-size: 2em;
   font-weight: lighter;
   margin-top: 0.25em;
-  color: #222;
+  color: #f57e7e;
 }
 
 form {
@@ -42,7 +39,7 @@ form {
 
 label {
   margin-bottom: 0.5em;
-  color: #444;
+  color: #315f72;
   font-weight: lighter;
 }
 
@@ -67,17 +64,20 @@ input::placeholder {
   padding: 0.938em;
   border: none;
   border-radius: 4px;
-  background-color: rgb(8, 63, 22);
-  color: #fefefe;
+  background-color: #efb5a3;
+  color: #315f72;
+  display: flex;
+  justify-content: center;
 }
 
 .buttonForm:hover {
-  background-color: rgb(30, 109, 50);
+  background-color: #f57e7e;
   color: #fefefe;
 }
 
 .username,
 .password {
+  color: #315f72 !important;
   display: flex;
   flex-direction: column;
   margin-bottom: 15px;
@@ -88,6 +88,8 @@ input::placeholder {
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+  justify-content: center !important;
+  flex-direction: column;
 }
 
 .login-container {
@@ -96,7 +98,7 @@ input::placeholder {
 
 .authForm-toggler {
   margin-top: 15%;
-  color: black;
+  color: #315f72;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -106,7 +108,7 @@ input::placeholder {
 .authForm-toggler:hover {
   margin-top: 15%;
   cursor: pointer;
-  color: pink;
+  color: #f57e7e;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -118,4 +120,9 @@ input::placeholder {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  color: #315f72;
+}
+
+.auth-input-text {
+  color: #315f72 !important;
 }

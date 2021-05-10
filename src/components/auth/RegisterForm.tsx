@@ -95,6 +95,7 @@ export class RegisterForm extends React.Component<RegisterProps, RegisterState> 
                 type="text"
                 name="username"
                 onChange={this.handleChange}
+                className="auth-input-text"
               />
             </div>
             <div className="password">
@@ -103,6 +104,7 @@ export class RegisterForm extends React.Component<RegisterProps, RegisterState> 
                 type="password"
                 name="password"
                 onChange={this.handleChange}
+                className="auth-input-text"
               />
               {errors.password.length > 0 && (
                 <span style={{ color: "red" }}>{errors.password}</span>

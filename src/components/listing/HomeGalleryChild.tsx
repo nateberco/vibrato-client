@@ -67,8 +67,12 @@ const HomeGalleryChild = (props: any) => {
         </CardBody>
       </Card>
       <br/>
-      <Modal isOpen={modal} toggle={toggle} className={className}>
-        <ModalHeader style={{backgroundColor: "#f7e1d7" , textAlign: "center", height: 90, borderRadius: 10}} toggle={toggle}>
+      <div className="gallery-div-modal">
+      <Modal className="gallery-modal" isOpen={modal} toggle={toggle} 
+      style={{ backgroundColor: "black"}}
+      >
+        
+        <ModalHeader toggle={toggle}>
           {props.listingItem.title}
         </ModalHeader>
         <Row className="justify-content-center">
@@ -79,6 +83,7 @@ const HomeGalleryChild = (props: any) => {
             {props.listingItem.description}{' '}
           </CardText>
         <CardText tag="h6" className="mb-2 text-muted">Category: {props.listingItem.category}</CardText>
+         
 
 {/* START META AUTH MODAL */}
 <Modal isOpen={metaModal} toggle={metaToggle} className={className}>
@@ -127,6 +132,7 @@ const HomeGalleryChild = (props: any) => {
 
         </ModalFooter>
       </Modal>
+      </div>
 
       </CardDeck>
     </div>

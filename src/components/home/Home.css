@@ -1,13 +1,36 @@
 #sitebarHome {
   font-size: 20px;
-  margin-top: 10px;
-  margin-left: 30px;
+  justify-content: center;
+
   color: #315f72;
   text-decoration: none !important;
+  margin: 0px auto;
 }
 
+#nav-row {
+  background: lightblue;
+  padding: 10px;
+  margin: 0px auto;
+}
+
+.sitebar {
+  display: flex;
+}
+
+#sitebar {
+  display: flex;
+  justify-content: center;
+}
 .siteBarBrand {
   color: #f57e7e;
+}
+
+#brand {
+  display: flex;
+
+  font-family: fantasy;
+  color: #f57e7e;
+  font-size: 50px;
 }
 
 /* FOOTER */
@@ -64,8 +87,70 @@ a.social:hover {
   display: flex;
   justify-content: center;
   background-image: linear-gradient(white, #315f72);
+  min-height: 115px;
 }
 
 .Logo {
   height: 150px;
+}
+
+/* DROPDOWN
+============================================ */
+
+#browsebar-dropdown {
+  color: white !important;
+  display: flex;
+
+  margin-top: 60px;
+  justify-content: center;
+}
+
+#browsebar-dropdown-header {
+  color: white !important;
+  border: 1px solid white;
+}
+
+.browsebar-dropdown-menu {
+  border: none !important;
+  background-image: linear-gradient(white, #315f72);
+}
+
+#browsebar-dropdown-header:hover {
+  color: white !important;
+  transform: scale(1.05);
+  background-color: #315f72;
+}
+
+#selection-logo {
+  transform: scaleX(-1);
+  height: 30px;
+}
+
+.dd-header {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  width: 100%;
+  padding: 0 20px;
+  color: #f57e7e !important;
+}
+
+button {
+  margin: 5px !important;
+  display: flex;
+  justify-content: space-between;
+  color: #315f72 !important;
+  font-size: 16px;
+  padding: 10px 20px 10px;
+  border: 0;
+  width: 90%;
+  text-align: left;
+  border-radius: 10px !important;
+}
+
+button:hover,
+button:focus {
+  cursor: pointer;
+  font-weight: bold;
+  background-image: linear-gradient(#315f72, white);
 }

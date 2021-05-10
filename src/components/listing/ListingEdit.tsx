@@ -75,8 +75,8 @@ const ListingEdit = (props:any) => {
             })
         })
         .then((res) => {
-            props.getListings();
             props.updateOff();
+            props.getListings();
         })
     }
 
