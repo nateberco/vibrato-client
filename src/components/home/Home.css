@@ -1,11 +1,161 @@
+/* SITEBAR */
+
 #sitebarHome {
   font-size: 20px;
-  margin-top: 10px;
-  margin-left: 30px;
+  justify-content: center !important;
   color: #315f72;
   text-decoration: none !important;
+  padding: 10px 20px 15px 10px;
+}
+
+.sitebar {
+  display: flex;
+  justify-content: center !important;
+  height: 15vh;
+  min-height: 6em;
 }
 
 .siteBarBrand {
   color: #f57e7e;
+}
+
+#brand {
+  position: absolute;
+  align-content: center;
+  justify-content: center;
+  font-family: fantasy;
+  color: #f57e7e;
+  font-size: 60px;
+  margin-top: 20px;
+}
+
+.nav-logout {
+  display: flex;
+  position: absolute;
+  justify-content: right;
+  align-content: right;
+  right: 50px;
+  flex-direction: row;
+}
+
+/* FOOTER */
+
+.footerContainer {
+  background-image: linear-gradient(#315f72, white);
+}
+
+#socialMediaFooter {
+  color: white;
+  text-align: center;
+  padding-top: 15px;
+  font-size: 25px;
+}
+
+a.youtube {
+  color: #eb3223;
+}
+
+a.facebook {
+  color: #4968ad;
+}
+
+a.twitter {
+  color: #49a1eb;
+}
+
+a.instagram {
+  color: black;
+}
+
+.social-container {
+  padding: 10px;
+  text-align: center;
+  letter-spacing: 5px;
+}
+
+a.social {
+  margin: 0 1rem;
+  transition: transform 250ms;
+  display: inline-block;
+}
+
+a.social:hover {
+  transform: translateY(-2px);
+  color: rgb(248, 229, 220);
+}
+
+/* BROWSE BAR */
+
+.BrowseBarDiv {
+  background-color: white;
+  height: 17vh;
+  display: flex;
+  justify-content: center;
+  background-image: linear-gradient(white, #315f72);
+  min-height: 115px;
+}
+
+.Logo {
+  height: 150px;
+}
+
+/* DROPDOWN
+============================================ */
+
+#browsebar-dropdown {
+  color: white !important;
+  display: flex;
+
+  margin-top: 60px;
+  justify-content: center;
+}
+
+#browsebar-dropdown-header {
+  color: white !important;
+  border: 1px solid white;
+}
+
+.browsebar-dropdown-menu {
+  border: none !important;
+  background-image: linear-gradient(white, #315f72);
+}
+
+#browsebar-dropdown-header:hover {
+  color: white !important;
+  transform: scale(1.05);
+  background-color: #315f72;
+}
+
+#selection-logo {
+  transform: scaleX(-1);
+  height: 30px;
+}
+
+.dd-header {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+  width: 100%;
+  padding: 0 20px;
+  color: #f57e7e !important;
+}
+
+.category-toggle-button {
+  margin: 5px !important;
+  display: flex;
+  justify-content: space-between;
+  color: #315f72 !important;
+  font-size: 16px;
+  padding: 10px 20px 10px;
+  border: 0;
+  width: 90%;
+  text-align: left;
+  border-radius: 10px !important;
+}
+
+.category-toggle-button:hover,
+.category-toggle-button:focus {
+  cursor: pointer;
+  font-weight: bold;
+  background-image: linear-gradient(#315f72, white);
 }

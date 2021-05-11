@@ -5,14 +5,13 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
+  Col,
   NavItem,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem,
+  Container,
   Modal,
   ModalHeader,
-  ModalBody
+  ModalBody,
+  Row
 } from 'reactstrap';
 
 import { Link, NavLink } from "react-router-dom";
@@ -68,59 +67,40 @@ const Sitebar = (props: any) => {
   }
 
   return (
-    <div>
+    
+    <div className="sitebar">
+      <Container>
       <Navbar light expand="md">
-        <NavbarBrand style={{color: "#f57e7e", fontSize: "40px"}} href="/">Vibrato</NavbarBrand>
         <NavbarToggler onClick={toggle} />
         <Collapse isOpen={isOpen} navbar>
-          <Nav className="mr-auto" navbar>
-            <NavItem id="sitebarHome">
-              <NavLink id="sitebarHome"onMouseOver={changeLink} onMouseLeave={resetLink}
-                to="/"
-                >Browse</NavLink>
-            </NavItem>
-           
-            
-            <UncontrolledDropdown id="sitebarHome" style={{marginLeft: "50px", marginTop: "2px"}} nav inNavbar>
-              <DropdownToggle nav caret onMouseOver={changeLink} onMouseLeave={resetLink} 
-              >
-                Listing Type
-              </DropdownToggle>
-              <DropdownMenu right>
-                <DropdownItem>
-                  Gear
-                </DropdownItem>
-                <DropdownItem>
-                  Services
-                </DropdownItem>
-                <DropdownItem divider />   
-                <DropdownItem>
-                  Gear & Services
-                </DropdownItem>  
-              </DropdownMenu>
-            </UncontrolledDropdown>
-            <NavItem id="sitebarHome">
-              <NavLink id="sitebarHome" onMouseOver={changeLink} onMouseLeave={resetLink}
-                to="/myListings"
-              >My Listings</NavLink>
-            </NavItem>
-            <NavItem id="sitebarHome">
-              <NavLink id="sitebarHome" onMouseOver={changeLink} onMouseLeave={resetLink}
-                to="/messages"
-              >Messages</NavLink>
-            </NavItem>
+          <Nav navbar>
+              <NavItem id="sitebarHome">
+                <NavLink id="sitebarHome" onMouseOver={changeLink} onMouseLeave={resetLink}
+                  to="/"
+                  >Browse</NavLink>
+              </NavItem>
+              <NavItem id="sitebarHome" >
+                <NavLink id="sitebarHome" onMouseOver={changeLink} onMouseLeave={resetLink}
+                  to="/messages"
+                >Messages</NavLink>
+              </NavItem>
+              <div className="nav-logout">
+              <NavItem id="sitebarHome">
+                <NavLink id="sitebarHome" onMouseOver={changeLink} onMouseLeave={resetLink}
+                  to="/myListings"
+                >My Listings</NavLink>
+              </NavItem>
+              <NavbarBrand id="sitebarHome"  style={{color: "#f57e7e", fontSize: "20px"}} href="/"onMouseOver={changeLink} 
+              onMouseLeave={resetLink} size="sm" onClick={clearToken}>Log Out</NavbarBrand>
+              </div>  
           </Nav>
-          {/* <NavbarBrand style={{color: "#f57e7e", fontSize: "20px"}} href="/"onMouseOver={changeLink} 
-              onMouseLeave={resetLink} size="sm" onClick={clearToken}>Log Out</NavbarBrand> */}
+          
               
-          { !sessionToken ? 
+          {/* { !sessionToken ? 
               <NavbarBrand style={{color: "#f57e7e", fontSize: "20px"}} href="/"onMouseOver={changeLink} 
               onMouseLeave={resetLink} size="sm" onClick={clearToken}>Log Out</NavbarBrand> : null
-              }
-
-              {/* <NavbarBrand style={{color: "#f57e7e", fontSize: "20px"}} onMouseOver={changeLink} 
-              onMouseLeave={resetLink} size="sm" onClick={authToggle}>Log In</NavbarBrand> : */}
-
+              } */}
+  
         </Collapse>
       </Navbar>
 
@@ -139,7 +119,8 @@ const Sitebar = (props: any) => {
         </ModalBody> 
       </Modal>
       {/* END META AUTH MODAL */}
-
+      </Container>
+      <NavbarBrand id="brand" href="/">Vibrato</NavbarBrand>
     </div>
   );
 }

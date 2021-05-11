@@ -36,9 +36,13 @@ const MessageCreate = (props: any) => {
             <Form onSubmit={handleSubmit}>
                 <FormGroup>
                     <Label htmlFor="message">your message:</Label>
-                    <textarea name="message" value={content} onChange={(e) => setContent(e.target.value)}/>
+                    <textarea 
+                    style={{width: "100%", height: 40, textAlign: "center", marginLeft: "AUTO", marginRight: "50px"}}
+                    name="message" value={content} onChange={(e) => setContent(e.target.value)}/>
                 </FormGroup>
-                <Button type="submit">Send Message</Button>
+                <Button 
+                style={{backgroundColor: "rgb(21, 68, 50)", color: "white", width: 130, height: 40, textAlign: "center", marginLeft: "5px", marginRight: "0", marginTop: "32px"}}
+                type="submit">Send Message</Button>
             </Form>
         </>
      );
