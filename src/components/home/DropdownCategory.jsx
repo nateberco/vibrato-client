@@ -49,7 +49,7 @@ return (
               <DropdownMenu className="browsebar-dropdown-menu" right>
               {props.categories.map(category => (
                             <li className="dd-list-item"key={category.id}>
-                                <button type="button" onClick={() => handleOnClick(category)}>
+                                <button className="category-toggle-button" type="button" onClick={() => handleOnClick(category)}>
                                     <span>{category.value}</span>
                                     <span id="selection-indicator">{isCategoryInSelection(category) && 
                                     <img id="selection-logo" className="Logo" src={logo} alt="" />

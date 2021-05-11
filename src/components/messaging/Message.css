@@ -72,6 +72,7 @@
 .conversation-delete-button {
   height: 40px;
   margin-top: 6.6vh;
+  margin-bottom: 0.5vh;
   margin-right: 5px;
   border: none !important;
   border-radius: 50px !important;
@@ -80,6 +81,7 @@
 
 .conversation-delete-button:hover {
   background-color: white;
-  height: 42px;
-  margin-top: 6.4vh;
+  transform: scale(1.05);
 }
+
+/* MESSAGE CREATE COMP */

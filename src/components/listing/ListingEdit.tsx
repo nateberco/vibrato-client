@@ -88,7 +88,7 @@ const ListingEdit = (props:any) => {
         <>
         <Modal isOpen={true} toggle={toggle}>
              <Form onSubmit={listingUpdate}>
-                <ModalHeader style={{marginLeft: "auto", backgroundColor: "#f7e1d7"}} close={closeButton} toggle={toggle}> 
+                <ModalHeader className="edit-modal-header" close={closeButton} toggle={toggle}> 
                     Edit your Listing
                 </ModalHeader>
                 <ModalBody>
@@ -108,7 +108,7 @@ const ListingEdit = (props:any) => {
                     <Input type="file" onChange={uploadImage} />
                     <br/>
                     {loading ? <h6>Loading...</h6> : <img src={editPhotoURL} style={{width:   '150px', height:   '150px'  }} />} {' '}
-                    <Button size= 'sm' color='outline-danger' disabled={loading} onClick={deleteImg}>Delete Image</Button>
+                    <Button size= 'sm' color='outline-danger' style={{ marginTop:"8.5em"}} disabled={loading} onClick={deleteImg}>Delete Image</Button>
                 </FormGroup>  
                     {/* END CLOUDINARY          */}   
 
@@ -138,14 +138,14 @@ const ListingEdit = (props:any) => {
                     </Label>
                 </FormGroup>
 
-                <FormGroup>
+                {/* <FormGroup>
                         <Label htmlFor="keywords">Edit Keywords</Label>
                         <Input type="textarea" name="keywords" value={editKeywords} onChange={(e) => setEditKeywords(e.target.value)}/>
-                </FormGroup>
+                </FormGroup> */}
                                     
             </ModalBody>
-            <ModalFooter style={{justifyContent: 'center', backgroundColor: "#f7e1d7"}}>
-                <Button disabled={loading} onMouseOver={changeBtn} onMouseLeave={resetBtn} onClick={toggle} type="submit">Update!</Button>
+            <ModalFooter style={{justifyContent: 'center', backgroundColor: "#efb5a3"}}>
+                <Button disabled={loading} style={{ backgroundColor: "#315f72", color: "white"}} onClick={toggle} type="submit">Update!</Button>
             </ModalFooter>
             </Form>
         </Modal>

@@ -1,36 +1,41 @@
+/* SITEBAR */
+
 #sitebarHome {
   font-size: 20px;
-  justify-content: center;
-
+  justify-content: center !important;
   color: #315f72;
   text-decoration: none !important;
-  margin: 0px auto;
-}
-
-#nav-row {
-  background: lightblue;
-  padding: 10px;
-  margin: 0px auto;
+  padding: 10px 20px 15px 10px;
 }
 
 .sitebar {
   display: flex;
+  justify-content: center !important;
+  height: 15vh;
+  min-height: 6em;
 }
 
-#sitebar {
-  display: flex;
-  justify-content: center;
-}
 .siteBarBrand {
   color: #f57e7e;
 }
 
 #brand {
-  display: flex;
-
+  position: absolute;
+  align-content: center;
+  justify-content: center;
   font-family: fantasy;
   color: #f57e7e;
-  font-size: 50px;
+  font-size: 60px;
+  margin-top: 20px;
+}
+
+.nav-logout {
+  display: flex;
+  position: absolute;
+  justify-content: right;
+  align-content: right;
+  right: 50px;
+  flex-direction: row;
 }
 
 /* FOOTER */
@@ -135,7 +140,7 @@ a.social:hover {
   color: #f57e7e !important;
 }
 
-button {
+.category-toggle-button {
   margin: 5px !important;
   display: flex;
   justify-content: space-between;
@@ -148,8 +153,8 @@ button {
   border-radius: 10px !important;
 }
 
-button:hover,
-button:focus {
+.category-toggle-button:hover,
+.category-toggle-button:focus {
   cursor: pointer;
   font-weight: bold;
   background-image: linear-gradient(#315f72, white);
